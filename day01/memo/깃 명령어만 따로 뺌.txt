@@ -1,0 +1,135 @@
+git-scm.com에서 git document 확인 가능
+
+로컬 레포지토리(로컬 저장소) 생성
+git init
+
+계정 등록
+깃허브 아이디를 필요로 함.
+(--global을 붙이면, 내 이메일과 계정명을 그 컴퓨터 사용자들과 공유하게 된다.)
+
+git config --global user.email "이메일"
+git config --global user.name "계정명"
+
+
+작업 파일의 시점 관리
+
+스테이징 단계
+git add 파일명/파일 경로/ . - 모든 파일
+예) git add .
+
+커밋 단계 - 스냅샷 단계 : 복구 시점에 대한 commit id 생성
+git commit -m "작업 내용"   (메모를 해 놓아야 함.)
+
+커밋 ID 확인
+git log
+
+git log --oneline : 로그를 짧게 한줄로 볼 때
+
+작업 시점 이동
+git checkout 커밋 ID;
+
+git checkout - 	: 직전 시점으로 이동
+
+git checkout 현재 브랜치명 : 처음 위치로 이동
+
+
+브랜치 - 작업 영역별로 나눌때
+
+git branch : 현재 브랜치 목록
+				- 기본 브랜치 master
+
+git branch 브랜치명 - 브랜치 생성
+				- 없는 브랜치면 생성
+				- 현재 브랜치 기준으로 소스가 새로운 브랜치로 복사
+				
+브랜치 삭제
+git branch -d 브랜치명
+git branch -D 브랜치명 (강제삭제)
+
+브랜치명 변경
+git branch - m 브랜치명
+git branch - M 브랜치명 
+
+브랜치 이동
+git checkout 브랜치명
+
+브랜치 병합
+git merge 병합할 브랜치명
+	-> 현재 브랜치에 병합할 브랜치 소스가 통합
+	
+	
+원격 레포지토리 연결(원격 저장소 연결)
+git remote add origin 원격 저장소 주소
+
+https://github.com/Sseryou/git_exam.git
+
+깃허브의 기본 브랜치 main
+	-> master로 처음에 올리면 main -> master
+	
+	
+로컬 저장소 상태 -> 원격 저장소 상태와 동기화
+git push origin 원격 브랜치명
+
+참고) 로컬 브랜치명과 원격 브랜치명이 달라도 되나,
+		가급적이면 동일하게 맞춘다.
+		
+		
+다른 작업자가 원격 저장소에 연결하는 방법
+1)git init
+git remote add origin 원격 저장소 주소
+
+원격 저장소 상태 -> 로컬 저장소 상태로 동기화
+git pull origin 원격 저장소 브랜치명
+
+다른 브랜치
+로컬에서 브랜치 생성 - git branch 브랜치명
+브랜치 이동 - git checkout 브랜치명
+
+2) git clone 원격 저장소
+	-> 원격 저장소가 이미 연결
+	
+올리다 보면 깃허브에서 pull request 버튼이 뜬다.
+
+내용을 작성하고.. 완료를 하게되면 글이 올라가고
+Merge pull request 버튼이 뜬다.
+
+교차 검증 후 master에 합칠수 있게 된다.
+
+컨펌 메세지까지 누르면, 합쳐진다.
+
+
+github Settings
+Collaborators 에서 협업 설정 가능
+
+
+intelliyj도 깃 내장되어 있음.
+
+
+git - DESKTOP GUI
+		- sourcetree
+		
+sourcetree 검색
+다운로드
+
+Bitbucket 건너뛰기
+체크 확인하고 다음
+취소
+Mercurial 체크해제
+Preference 다음
+ssh 키 아니오
+
+
+다음
+경로를 git_exam으로 설정
+
+다음
+
+브랜치를 더블클릭으로 바꿀 수 있다.
+이름도 바꿀 수 있다.
+
+태그는 버전 배포할때 사용
+
+.gitignore 파일 -> 형상관리 배제
+		
+=======================================
+

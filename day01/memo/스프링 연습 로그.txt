@@ -1,0 +1,252 @@
+maven
+
+자바 버전 명시 필요
+
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>19</maven.compiler.source>
+    <maven.compiler.target>19</maven.compiler.target>
+  </properties>
+
+
+pom.xml에 자바 버전 명시부분 추가
+
+<dependencies> 추가
+
+
+mvn리포지토리 들어가기
+
+
+
+spring context 검색
+
+Spring Context
+교재를 보면, 6이 최신 버전이지만, 교재 기준이 5버전이므로 5.3.26버전 들어가기
+Compile Dependencies를 보면, 의존하는 모듈을 한눈에 볼 수 있다.
+
+<dependency> 복사 붙여넣기
+
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>5.3.26</version>
+</dependency>
+
+
+우측 상단 maven 눌러 업데이트
+
+
+api 문서 등록
+https://docs.spring.io/spring-framework/docs/current/javadoc-api/
+패키지 이름이 더럽게 길기 때문에 문서로 보는게 좋다.. 키워드 기준으로 기억하는게 낫다...
+
+
+다시 인텔리제이
+
+src에서 main/java 추가
+
+src에서 test/java 추가
+
+main/java에서 exam01 패키지 추가 
+exam01패키지에서 AppCtx 클래스 추가(깃 추가할건지 뜨면 add)
+						Hello 클래스 추가
+						
+public class Hello {
+    public void greet(String name){
+        System.out.printf("%s님 안녕하세요!",name);
+    }
+}
+
+AppCtx로 이동
+
+
+@Configuration
+public class AppCtx {
+
+}
+
+수정
+
+@Configuration
+public class AppCtx {
+    public Hello hello(){
+        Hello hello = new Hello();
+        return hello;
+    }
+    
+}
+
+수정
+
+@Configuration
+public class AppCtx {
+
+    @Bean //스프링에게 정보를 전달해 준다.
+    public Hello hello(){
+        Hello hello = new Hello();
+        return hello;
+    }
+
+}
+
+exam01 패키지에서 Ex01 클래스 생성
+
+public class Ex01 {
+    public static void main(String[] args) {
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx.class);
+
+        Hello hello = ctx.getBean("hello", Hello.class);
+
+        hello.greet("이이름");
+
+        ctx.close();
+    }
+
+}
+
+수정
+
+public class Ex01 {
+    public static void main(String[] args) {
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx.class);
+
+        Hello hello = ctx.getBean("hello", Hello.class);
+
+        hello.greet("이이름");
+
+        Hello hello2 = ctx.getBean("hello", Hello.class);
+
+        hello2.greet("김이름");
+        System.out.println(hello == hello2);
+		 //싱글톤 패턴으로 관리
+		 
+		 
+        ctx.close();
+    }
+
+}
+
+//결과가 true로 나온다. 동일한 객체라는 뜻이다.
+//다른 객체가 아닌 동일한 객체로, 싱글톤 패턴을 자동으로 사용하였다.
+//스프링에서는 메모리를 아끼기 위해 객체를 관리 할 때 전부 싱글톤 패턴을 쓰게 된다.
+
+
+//Data Acsses Object = Dao
+
+java에 models.member 패키지 생성
+JoinService 클래스 생성
+Member 클래스 생성
+MemberDao 클래스 생성
+
+롬복 설치
+
+
+
+
+
+@Data
+public class Member {
+    
+    private String userId;
+    private String userPw;
+    private String userNm;
+}
+
+
+
+public class MemberDao {
+    private static Map<String, Member> members = new HashMap<>();
+    
+    public void insert(Member member){
+        members.put(member.getUserId(), member);
+    }
+    public Member get(String userId){
+        return members.get(userId);
+    }
+    
+}
+
+
+public class JoinService {
+    private MemberDao memberDao;
+    
+    public JoinService(MemberDao memberDao){
+        this.memberDao = memberDao;
+    }
+    
+    public void join(Member member){
+        memberDao.insert(member);
+    }
+
+}
+
+java에 exam02 패키지 생성
+
+exam02에 AppCtx 클래스 생성
+
+@Configuration
+public class AppCtx {
+
+    @Bean
+    public MemberDao memberDao(){
+        return new MemberDao();
+    }
+    
+    @Bean
+    public JoinService joinService(){
+        JoinService joinService = new JoinService(memberDao());
+        
+        return joinService;
+    }
+
+
+}
+//@Bean을 입력해야 관리하는 객체가 된다.
+
+exam02에 Ex01 클래스 생성
+
+public class Ex01 {
+    public static void main(String[] args) {
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx.class);
+
+        JoinService service = ctx.getBean("joinService", JoinService.class);
+
+        Member member = new Member();
+        member.setUserId("user01");
+        member.setUserPw("123456");
+        member.setUserNm("사용자01");
+        
+        service.join(member);
+        
+        ctx.close();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

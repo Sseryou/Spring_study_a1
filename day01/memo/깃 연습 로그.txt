@@ -1,0 +1,350 @@
+
+D 드라이브에 git-exam 폴더 생성
+
+cmd
+
+d: 입력
+cd git-exam
+git init -> 숨김 파일로 .git이 만들어짐(기본적으로 .붙은 파일들은 숨김파일)
+
+(노트패드)git-exam폴더안에 README.md파일 만들기 (노트패드 등 이용...)
+dir/w
+
+git add .
+git commit -m "작업1 완료" -(오류 발생, 계정 로그인이 되지 않은 상태에서의 저장 불가)
+
+git config --global user.email "tjdalstn11@gmail.com"
+git config --global user.name "Sseryou"
+
+git add .
+git commit -m "작업1 완료"
+
+
+README.md 이동
+#작업2 입력
+
+다시 cmd
+git commit -m "작업2 완료"
+
+
+README.md 이동
+#작업3 입력
+
+git add .
+git commit -m "작업3 완료"
+git log
+
+commit ~~부분을 복사
+
+git checkout 030483e477998e9e8ee0781976c75cf0a94c85ed
+
+(HEAD 부분이 이동한 것을 볼 수 있다.)
+
+git checkout -
+(바로 전 시점으로 이동)
+
+git log --oneline
+(커밋 ID가 한줄로 짧은 형태로 보인다.)
+
+README.md 이동
+
+#작업2, 3, 4 입력
+git add .
+git commit -m "작업4 완료"
+
+git log --oneline
+git checkout master
+
+dir/w
+
+git log --oneline
+
+git branch
+(*이 붙은 위치가 현재 브랜치 위치다.)
+
+dir/w
+
+git branch cart (장바구니...만들기)
+
+git checkout cart
+
+git branch
+
+(노트패드)CART.md 만들고 #장바구니 작업 1 쓴 후 저장
+
+git add .
+
+git commit -m "장바구니 작업1 완료"
+
+git log --oneline
+
+git checkout master
+
+dir/w
+(이 시점에서는 작업을 완료한 CART.md가 보이지 않게 된다.)
+
+git checkout cart
+
+dir/w
+(다시 보인다.)
+
+git branch
+
+dir/w
+
+git branch order
+(이 시점에서, cart 브랜치에 있는 파일이 복사가 된다.)
+
+git branch
+
+git branch order
+
+dir/w
+(CART.md 파일이 복사가 되어 보이는 것을 확인할 수 있다.)
+
+git branch
+
+(노트패드) ORDER.md 추가하고 #주문서 작업1 완료 작성
+
+git add .
+git commit -m "주문서 작업1 완료"
+git branch
+
+git log --oneline
+
+git checkout cart
+
+git checkout master
+(작업한 내용이 분리되어있는것을 확인 할 수 있다.)
+
+git checkout cart
+
+(노트패드)CART2.md 추가하고 #장바구니 작업 2 추가 완료! 작성 후 저장
+(노트패드)CART1.md 수정, #장바구니 작업 2 작성 후 저장
+
+
+git add .
+git commit -m "Cart2. Cart 작업 완료"
+
+git log --oneline
+
+git branch
+
+(cart 기준으로 병합할 준비를 하고 master로 최종 통합할 준비를 한다.)
+(현재 브랜치 cart)
+
+git branch testOrder
+(브랜치를 바로 병합하는건 문제가 많으므로 테스트 브랜치를 만든다.)
+
+git checkout testOrder
+
+git branch
+
+dir/w
+
+git merge order
+(order를 병합한다.)
+
+git branch
+
+git checkout master
+
+git merge testOrder
+
+git branch
+
+git branch -d testOrder
+
+git branch
+
+
+git checkout cart
+(노트패드)CART.md 파일 #장바구니 작업 1-1로 수정하고 저장
+
+git add .
+git commit -m "작업햇음!"
+
+git branch testOrder2
+
+git branch
+
+git checkout testOrder2
+
+git branch
+
+git merge order
+
+git checkout order
+
+
+깃허브로 이동
+자기 깃허브 홈페이지 들어가기
+Create repository 누르기 (new)
+
+Repository name : git_exam
+
+Create repository 누르기
+
+그러면 원격 저장소 주소가 나온다.
+
+
+cmd로 이동한다
+
+git remote add origin https://github.com/Sseryou/git_exam.git
+(이 시점에서 상태 원격 반영 가능)
+
+git branch
+git checkout master
+
+git push origin master
+여기까지 하면 창이 하나 뜬다.
+여기에 아이디와 비밀번호 입력
+Autolize....
+
+git branch
+
+git checkout cart
+(브랜치를 cart로 바꾼다)
+
+git push origin cart
+(cart 브랜치를 원격에 반영한다)
+(깃허브를 확인하면 , master 이외에 cart 브랜치가 생긴 것을 확인 할 수 있다.)
+
+git checkout order
+
+git push origin order
+
+D드라이브로 이동 -> git_exam2 폴더 생성
+
+cmd로 이동
+git log --oneline
+(빨간색으로 origin 붙은 브랜치는 원격에 연결된 상태이다.)
+
+git checkout master
+git branch
+(master도 원격에 연결된 상태)
+
+cd ..
+cd git_exam2
+git init
+
+깃허브 <>코드 누르기
+주소 복사
+
+git remote add origin https://github.com/Sseryou/git_exam.git
+
+git pull origin master
+
+git branch
+git branch order
+
+git branch
+git checkout order
+
+git branch
+git pull origin order
+
+git branch
+
+
+cd ..
+md git_test
+cd git_test
+git clone https://github.com/Sseryou/git_exam.git
+
+cd git_exam
+git branch
+git branch order
+git pull origin order
+dir/w
+
+(노트패드) README.md 수정 #작업5 추가
+
+파일 상태 눌러서 
+스테이지에 올라가지 않은 파일 확인
++를 누르면, 스테이지 에 올라가게 된다.
+
+아래쪽에 메세지 입력후 커밋 옵션 설정후 커밋
+
+푸시 -> 마스터 체크 -> 푸시
+
+ 오류 중 (e.g., 'git pull ...') before pushing again.
+ 
+ 발생.
+ 
+ pull 누르기
+ 
+ 가져오기 위한 원격 브랜치 master 누른 후 pull
+ 
+ (노트패드) README.md 수정 #작업6 추가
+ 
+파일상태
+스테이지 올리기 
+
+-에 바뀐 내용 즉시푸시 체크
+메세지 입력후 커밋
+
+======================================
+코드 하나 만들고 올려보기
+
+실제 코드 깃 연동 연습
+
+
+폴더 만듬 6.서버프로그램 구현
+그 안에 폴더 만듬 spring_study
+
+자기 깃허브 리포지토리 -> 세팅... 맨 밑 delete...
+
+ new 클릭
+ 이름 Spring_study_a1
+
+Description (optional)
+
+A1 과정 스프링 소스
+크리에이트 리포지토리
+
+cmd 이동
+
+cd ..
+cd ..
+
+c:
+
+cd C:\Users\Administrator\Desktop\성민수\6.서버프로그램 구현\spring_study
+
+git init
+
+git remote add origin https://github.com/Sseryou/Spring_study_a1.git
+
+노트패드로 .gitIgnore 만들어서 넣어주기
+
+인텔리j
+아까 만든 폴더를 경로로 프로젝트 생성
+
+아키타입
+
+기존과 동일하게..
+
+ .gitignore 이동
+ 
+ 
+ 작성
+ .idea/
+ target/
+ 
+ cmd
+ git add .
+	git commit -m "day01 소스 업로드"
+
+
+	git push origin master
+
+
+	git pull origin master
+	
+	.gitIgnore 파일 day01로 이동
+	
+	git add .
+	git commit -m "day01 .gitignore추가"
+	git push origin master
+	

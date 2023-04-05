@@ -1,0 +1,39 @@
+스프링 버전을 변수로 만들어 적용하는 방법
+
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>19</maven.compiler.source>
+    <maven.compiler.target>19</maven.compiler.target>
+    <spring.version>5.3.26</spring.version>
+  </properties>
+
+<dependencies>
+
+
+  <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>${spring.version}</version>
+  </dependency>
+  
+  
+   AnnotationConfigApplicationContext
+   
+    AnnotationConfig ApplicationContext로 분리해서 읽으면 편하다...
+	
+	
+	
+	AspectJ Weaver (구현체)
+	1.9.19버전 사용
+	업데이트 날짜를 잘 볼것...최신버전인걸로...
+	
+	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjweaver</artifactId>
+    <version>1.9.19</version>
+    <scope>runtime</scope>
+</dependency>
+
+//scope는 제거해서 사용한다....

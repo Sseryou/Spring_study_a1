@@ -1,0 +1,121 @@
+스프링 DI 설정 및 사용
+
+1. 스프링을 이용할 객체 조립과 사용
+
+2.@Configuration
+	-설정 클래스
+	-스프링이 관리할 객체의 설정
+	
+3.@Bean
+	- 스프링이 관리할 객체
+	
+	
+
+4. @Autowired
+	- 의존성 자동 주입
+	- 스프링이 대신 의존성 주입
+	
+5. @import
+- 두 개 이상의 설정파일 설정하기
+
+6. @Qualifier
+- 의존 주입시 충돌 해결 방법
+
+
+7. @Autowired ★
+- 의존성 자동 주입
+
+1) 멤버 변수
+2) setter 형태의 메서드의 매개변수
+	-> 매개 변수에 의존성을 주입, setter 메서드를 자동 호출
+3) Optional ...
+4) 생성자 매개 변수 - @Autowired를 사용하지 않고, 
+@ComponentScan과 함께 사용
+			
+			
+-required : 기본값이 true
+				-반드시 의존성을 해결할 수 있는 스프링 관리 객체 O
+				- 없으면 오류 발생
+				false
+				-의존성이 없으면 setter 형태 메서드는 호출 X
+				
+				참고)
+				required가 true일때 의존성이 없는 경우
+				
+				@Nullable 
+					- 의존이 없어도 setter 형태 메서드를 호출 O
+					- 의존성이 없으면 null값을 매개변수로 주입
+
+컴포넌트 스캔 
+
+1. @ComponentScan
+		- basePackages
+			- 스캔범위가 되는 패키지
+			-  패키지를 포함한 하위 모든 경로와 모든 클래스가 스캔 범위
+			- 특정 스캔 범위를 포함하거나 제거할 수 있다.
+			
+2. 기본 스캔 대상
+
+	-주로 사용-(역할이 따로 연결되지 않음)
+	@Component
+	@Service
+	
+	-기능연관 애노테이션-
+	@Configuration - 역할을 정해주는 애노테이션
+	@Controller - URL 처리
+	@Repository  - 데이터 베이스 관련
+	@Aspect - 공통기능
+	
+- 스캔 범위에 있는 클래스 위에 상기 애노테이션이 있으면 알아서 스프링 관리객체(Bean)을 생성
+- 빈 이름 -> 클래스명에서 가장 앞 알파벳만 소문자로 만들고 이름을 생성
+예) MemberDao -> memberDao
+
+			-> 패키지명 관계없이 무조건 클래스명으로 만든다. (문제가 된다.)
+			-> 빈 이름이 동일하면 충돌 -> 오류(ConflictingBeanDefinitionException)
+			
+			-> 이름을 쉽게 바꿀 수 있는 애노테이션 기능을 제공한다. 예) @Component("memberDao2")
+
+
+스캔 범위 제외
+	excludeFilters
+			-@Filter
+				type -FilterType
+							.ANNOTATION - 지정된 애노테이션이 있는 클래스는 스캔 범위에서 제외
+							.ASSIGNABLE_TYPE - 클래스명
+								-classes
+							
+							.REGEX - 정규 표현식
+							.ASPECTJ - ANT 패턴(spring-aop(구현체 없음), aspectJweaver(다른 구현체가 필요하므로, 이 구현체를 사용한다.))
+								- pattern
+								
+										* -> 하위 파일(하위 클래스), 하위 메서드
+										** -> 현재 경로 포함 하위 경로
+												(현재 패키지 포함 하위 패키지 + 모든 클래스)...
+										? -> 문자 1
+										
+										예) m?1 -> m01, ma1...
+								
+								
+								
+빈 라이프 사이클과 범위
+1. 객체 생성 -> 의존 설정 -> 초기화 -> 소멸
+
+2. InitializingBean
+	- afterPropertySet() : 초기화 단계에서 실행
+	
+3. DisposableBean
+	- destroy() : 소멸 단계에서 호출
+	
+4. @Bean : initMethod, destroyMethod
+	- 데이터베이스 설정할때 사용할 것
+	
+	- initMethod : 초기화 단계에서 호출될 메서드를 설정 (단, 메서드의 매개변수 X)
+	- destroyMethod : 소멸단계에서 호출될 메서드를 설정 (단, 메서드의 매개변수 X)
+	
+
+
+빈 객체의 생성과 관리 범위
+
+1. @Scope
+		- singleton -> 기본값
+		- prototype -> 인스턴스가 매번 생성

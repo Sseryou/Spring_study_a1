@@ -14,14 +14,13 @@ public class Ex01 {
         //AppCtx.class는 반환형이 Hello인 hello를 내장하고 있는 상태이다.
         //hello를 반환하는 상태로 저장이 된 상태이다.
         Hello hello = ctx.getBean("hello", Hello.class);
-        //Hello 형태의 hello 객체를 만든다. 그러나, 그냥 만드는 것이 아닌
-        //컨테이너 객체(ctx) 에 getBean을 이용하여, 담아놓은 Hello.class에 접근한다.
-        //맨 앞의 "hello"는 AppCtx에서 불러올 메서드 이름이고,
-        //뒤의 Hello.class는 어느 클래스의 기능을 사용할 것인지를 결정한다.
+        //Hello 형태의 hello 객체를 컨테이너에서 끌어와서 만든다.
+        //컨테이너 객체(ctx) 에 getBean을 이용하여, 이름이 hello인 빈 객체를 구한다.
+        //이 메서드는 Hello 객체의 생성자를 통해 hello를 주입한다.
+        //따라서 이 Hello 객체는 내부에서 hello 빈 객체를 사용한다.
 
         hello.greet("이이름");
         //hello 객체에, Hello 클래스에 있는 기능인 greet를 사용할 수 있게 되었다.
-
 
 
         Hello hello2 = ctx.getBean("hello", Hello.class);

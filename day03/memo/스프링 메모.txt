@@ -1,0 +1,131 @@
+AOP 프로그래밍
+프록시를 구현한 대표적인 프로그래밍
+
+
+프록시(Proxy)
+1. 대리하다
+
+팩토리얼
+!5 -> 5 * 4 * 3 * 2 * 1
+
+2가지
+	1) 반복문
+	2) 재귀적 방식 - 함수를 계속 쌓기때문에 성능이 떨어진다.
+
+
+핵심기능 전후에 공통 기능을 대신 수행
+	
+	- factorial : 핵심 기능
+	- 성능 측정 시간 측정 : 공통 기능
+
+- 디자인 패턴 : 데코레이터 패턴
+	-> 기반 기능  + 추가 기능
+	
+	-> 스프링에서는 이런 패턴을 "프록시" 라고 한다.
+	
+참고) 프록시 패턴 : 통제 제어 - 예) 방화벽
+
+java.io
+	보조스트림 예) BufferedInputStream
+							기반 기능 + 버퍼(추가)
+
+
+AOP
+(실 클래스는 다르게 되어있음. 예를 들어 설명)
+
+class BufferedInputStream extends InputStream{
+
+	private InputStream in;
+
+	public BufferedInputStream(InputStream in){
+		this.in = in
+	}
+	public int read(){
+	
+		//버퍼 추가 기능
+		
+		int byte = in.read(); // 핵심 기능
+		
+		//버퍼 추가 기능
+	
+		return byte;
+	
+	}
+
+}
+
+스프링 프록시
+spring-context
+spring aop(Aspect Oriented Programing) API
+aspectjweaver 구현체
+
+1. @Aspect
+	- 공통 기능이 정의된 클래스
+	
+2. @Pointcut
+	-공통 기능이 적용될 범위(Ant)
+
+3. @Around
+	- 공통 기능
+	
+Proxy 가상의 클래스 implements Calculator{
+
+	private ...
+	
+	public ... (Calculator calculator){
+		...
+	}
+	...
+}
+
+4. ProccedingJoinPoint 메서드
+
+- Object proceed() : 핵심 기능 수행
+
+- Signature getSignature()
+	- String getName()
+	- String toLongString()
+	- String toShortString()
+	
+
+
+- Object getTarget()
+
+	//매개변수 정보를 알 수 있음
+- Object[] getArgs()
+	
+	
+5. 프록시 생성 방식
+
+6. execution 명시자 표현식
+
+Ant 패턴
+
+() : 매개변수가 없는 메서드
+(..) : 0개 이상의 모든 매개변수 (제한 X)
+(*) : 1개의 매개변수가 있는 메서드
+(*,*) : 2개의 매개변수가 있는 메서드
+(Long) : 매개변수가 1개, 자료형이 Long
+(long, ..) : 첫번째 매개변수는 long 자료형, 2번째 자료형부터는 자유롭게 여러개..
+
+패키지명.* -> 패키지명의 바로 모든 하위 클래스
+
+패키지명..* -> 패키지명을 포함한 하위 패키지 + 모든 클래스
+
+예) aopex..*
+	-> aopex의 하위 클래스
+	-> aopex.sub의 하위 클래스
+		aopex.sub.subsub의 하위 클래스
+
+7. @Order
+
+프록시 중에서 순서가 중요하게 유지되어야 할때, 사용한다.
+@Order(1)
+	
+	
+
+
+CachedProxy -> 캐시 없음 -> ProxyCalculator2
+
+CachedProxy -> 캐시가 있음 -> X
+

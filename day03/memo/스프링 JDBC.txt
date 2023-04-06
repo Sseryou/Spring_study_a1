@@ -1,0 +1,55 @@
+Spring JDBC 
+
+
+JDBC API
+	- 예외처리
+	- 자원 해제
+	
+	- 2가지 처리에서 코드의 양이 실제 필요한 핵심 로직보다 더 많아진다.
+	
+	
+		접속 할때마다 커넥션을 만들면 서버에 부담이 매우 많이 간다.
+Spring JDBC + 커넥션 풀(Tomcat JDBC)
+					(DB 연결 객체)커넥션을 미리 만들어 놓은 저장소. 커넥션을 사용하면 다시 회수한다.
+					
+		커넥션에 있는 객체는 계속 테스트가 되며, 연결이 있는지 없는지를 계속 확인한다.
+			반응이 없으면, 연결을 끊는다.
+			
+		커넥션 풀도 자원을 소모하므로, 최대 갯수 최소 갯수를 설정해 주어야 한다.
+		
+		setTimeBetweenEvictionRunsMillis(int) 커넥션 검사 주기 설정.
+					
+1. 사용자 접속 -> DB 연결 객체 -> DB 서버로 연결
+
+Spring JDBC + Tomcat JDBC(커넥션 풀 제공)
+ojdbc8
+
+Spring JDBC - 스프링 버전과 동일하게 설치
+Tomcat JDBC - Tomcat JDBC » 9.0.73
+ojdbc8 - Ojdbc8 » 21.9.0.0
+
+
+javax.sql.DataSource 
+
+DataSource - 연결 설정 객체
+
+
+1. JdbcTemplate
+	- 쿼리 실행
+	
+	int update(...) : INSERT, UPDATE, DELETE
+		- 반환값 : 반영된 레코드 갯수
+	
+	List<T> query(.....) : SELECT ....
+		- 반환값 : 조회된 레코드
+		
+	T queryForObject(....) : SELECT
+		- 레코드 1개
+
+2. @Transactional을 이용한 트랜잭션 처리
+	- PlatformTransactionManager
+	- DataSourceTransactionManager
+
+
+
+

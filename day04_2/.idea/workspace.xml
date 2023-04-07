@@ -4,36 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e0d40ad-4a5a-4908-9ce3-eca767e66094" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../day04/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/src/main/java/config/AppCtx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/src/main/java/main/Ex01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/src/main/java/models/member/Member.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/src/main/java/models/member/MemberDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04/src/main/resources/logback.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/config/ControllerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/config/MvcConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/HelloController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/hello.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../day03/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day03/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="2e0d40ad-4a5a-4908-9ce3-eca767e66094" name="Changes" comment="&quot;23-04-07 수업내용 추가&quot;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +85,18 @@
       <option name="presentableId" value="Default" />
       <updated>1680835732157</updated>
     </task>
+    <task id="LOCAL-00001" summary="&quot;23-04-07 수업내용 추가&quot;">
+      <created>1680839992953</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680839992953</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;23-04-07 수업내용 추가&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;23-04-07 수업내용 추가&quot;" />
   </component>
 </project>

@@ -1,0 +1,50 @@
+하루 10분, SQL 하기
+저녁반 강의 동영상 참고해도 괜찮음
+
+==================================
+
+스프링에서 사용하기위해 스키마를 만들어줌
+
+CREATE USER springdb IDENTIFIED BY aA123456;
+
+GRANT RESOURCE, CONNECT TO springdb;
+
+dbeaber
+새 데이터베이스 생성
+
+Username springdb
+Password aA123456
+
+입력후 Test Connection...
+
+테이블 하나 추가
+만든 데이터 베이스에 우클릭 후 sql편집기 생성
+
+
+CREATE TABLE MEMBER(
+	userNo NUMBER(10) CONSTRAINT PK_MEMBER PRIMARY KEY, 
+	userId VARCHAR2(40) CONSTRAINT UQ_MEMBER_USERID UNIQUE NOT NULL, 
+	userPw VARCHAR2(65) CONSTRAINT NN_MEMBER_USERPW NOT NULL, 
+	userNm VARCHAR2(40) CONSTRAINT NN_MEMBER_USERNM NOT NULL,
+	regDt DATE DEFAULT SYSDATE
+	);
+		
+	
+CREATE SEQUENCE SEQ_MEMBER;
+
+인텔리j로 이동
+
+==================================
+간단한 게시판을 만들 예정
+테스트도 할 것임
+행위테스트
+
+
+==========================
+C:\Users\Administrator\.m2
+
+만약 뭐가 잘 안됄 때....
+C:\Users\Administrator\.m2\repository에 있는 내용 전부 삭제
+
+
+

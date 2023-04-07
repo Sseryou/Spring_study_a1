@@ -1,0 +1,135 @@
+
+
+spring jdbc
+JdbcTemplate
+
+	- int update(....) : INSERT, UPDATE, DELETE
+	- List<T> query(....) : SELECT - RowMapper
+	- T queryForObject(....) : SELECT, - RowMapper 
+										- 집계함수
+											(COUNT, MAX, MIN, SUM ...) : 기본형 Wrapper 클래스 지정
+	
+slf4j-api - 로거 api
+logback-classic
+
+logback 설치 후 로그파일은 resource 파일에 만든다.
+logback.xml
+
+위에 있을수록 상위의 로그, 아래에 있을수록 하위로그
+FATAL
+ERROR
+WARN
+INFO
+DEBUG
+TRACE
+
+java.sql.ResultSet
+	- 레코드 조회 결과를 갖고있는 인터페이스
+	
+	
+	날짜와 시간 - java.sql.Timestamp
+	날짜 - java.sql.Date
+	시간 - java.sql.Time
+	
+예시)
+적용 후의 로그( run 이후)
+2023-04-07 10:16:58,904 DEBUG o.s.j.c.JdbcTemplate - Executing prepared SQL update
+2023-04-07 10:16:58,906 DEBUG o.s.j.c.JdbcTemplate - Executing prepared SQL statement [INSERT INTO MEMBER (userNo, userId, userPw, userNm)  VALUES (SEQ_MEMBER.nextval, ?, ?, ?)]
+2023-04-07 10:16:58,907 DEBUG o.s.j.d.DataSourceUtils - Fetching JDBC Connection from DataSource
+
+코드 수정 이후 로그
+2023-04-07 10:21:58,367 DEBUG o.s.j.c.JdbcTemplate - Executing prepared SQL update
+2023-04-07 10:21:58,368 DEBUG o.s.j.c.JdbcTemplate - Executing prepared SQL statement [DELETE FROM MEMBER WHERE userId = ?]
+2023-04-07 10:21:58,370 DEBUG o.s.j.d.DataSourceUtils - Fetching JDBC Connection from DataSource
+
+
+JDBC API -> Spring JDBC
+			->PreparedStatement
+
+java.sql.Connection
+java.sql.PreparedStatement
+
+오라클
+	세션
+	트랜잭션
+	
+	COMMIT, ROLLBACK 전이 하나의 트랜잭션
+	- DB 영구 반영 시점까지
+	
+	
+Connection
+
+
+//오토커밋 설정을 false로 해놓아야, 
+//예기치 못한 DB연동 실패를 막을 수 있다.
+
+트랜잭션 수동 관리
+
+//프록시를 이용
+
+autoCommit(false) //공통 기능
+
+
+				
+쿼리실행1 //핵심 기능
+쿼리실행2
+쿼리실행3
+
+commit() //공통 기능
+
+@Transactional - 클래스명, 메서드명
+//autoCommit(false)등 설정을 자동으로 해주는 애노테이션
+//실패하면 롤백이 된다.
+
+
+=======================================
+
+
+
+스프링 MVC
+1. 스프링 MVC 설정
+
+M(Model) : 사용자가 원하는 작업을 수행
+
+V(View) : 수행한 결과를 사용자에게 제공
+
+C(Controller) : 중개자
+
+spring webmvc 프레임워크 : 도움을 주는 설계 틀
+	- spring-context + spring webmvc
+
++ 자바 웹 기술
+	- servlet-api
+	- servlet.jsp-api
+	
++ 톰캣
+
+
+2. web.xml
+
+
+WebMvcConfigurer 인터페이스
+
+
+
+코드 구현
+1. 컨트롤러 구현
+2. JSP 구현
+3. 실행하기
+
+스프링 MVC 프레임워크 동작 방식
+
+
+
+
+DispatchServlet과 스프링 컨테이너
+1. DispatchServlet
+	- WebApplicationContext
+		- HandlerMapping
+		- HandlerAdapter
+		- 컨트롤러 빈
+		- ViewResolver
+		
+WebMvcConfigurer 인터페이스와 설정
+		
+		

@@ -23,6 +23,7 @@
 
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
+        <!-- / : 모든 url 적용-->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 

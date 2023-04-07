@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable(); //자바스크립트, 스타일 시트 등 스프링에서 처리 할 수 없는 정적 자원들을 대신 설정해준다.
+        configurer.enable(); //자바스크립트, 스타일 시트 등 스프링에서 처리 할 수 없는 동적 자원 등 정적 자원들을 대신 설정해준다.
     }
 
     @Override

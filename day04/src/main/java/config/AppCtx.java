@@ -16,7 +16,7 @@ public class AppCtx {
 
 
     @Bean(destroyMethod = "close")
-    //스프링 컨테이너 소멸 시
+    //객체 반환시
     //자동으로 자원 해제를 하도록 설정
     //메서드 이름 DataSource는 고정이다.(이미 정의되어 있음)
     public DataSource dataSource(){

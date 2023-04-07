@@ -97,6 +97,7 @@ public class MemberDao {
 
         //데이터 조회 인터페이스
         //쿼리 식별 결과를 매핑..?
+        //ResultSet rs = 쿼리 검색 결과가 담길 변수.
 
         Member member = new Member();
         //이름값 기준으로 USERNO를 찾은다음 그 값을 long 형태로 읽어서,

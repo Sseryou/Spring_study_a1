@@ -89,9 +89,11 @@ public class MemberDao {
        String sql = "SELECT * FROM MEMBER";
        //RowMapper<T> rowMapper = 인터페이스,
         // Object...args = 추가로 매개변수에 넣은 값을 넣을 때
+       //sql 실행 결과가 한줄한줄 전부 담긴다.
        List<Member> members = jdbcTemplate.query(sql, this::memberMapper);
        return members;
     }
+
 
     private Member memberMapper(ResultSet rs, int i) throws SQLException{
 

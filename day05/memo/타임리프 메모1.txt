@@ -1,0 +1,29 @@
+타임리프(Thymeleaf)
+1. 스프링 MVC와 타임리프 연동 설정
+thymeleaf spring5   -> Thymeleaf Spring5 » 3.1.1.RELEASE
+
+thymeleaf java8time   -> Thymeleaf Extras Java8time
+					- #temporals 식 객체
+
+2. 타임리프 소개
+- 자연스러운 템플릿 지향 언어(Natural Template)
+
+
+타임리프 기본문법
+1. 타임리프의 주요 식(expression)
+
+1) 변수식 : ${속성명}, ${연산식}
+2) 메세지식 : #{메세지 코드}
+3) URL식 : @{URL ...} : -> 컨텍스트 경로가 자동 추가 + 추가 기능
+			예) /study : 컨텍스트 경로
+				@{/member/join} -> /study/member/join
+4) 선택 변수식 : *{....} , th:object
+
+2. 타임리프 식 객체
+3. th:text, th:utext
+4. th:each
+5. th:href
+6. th:object
+
+스프링 MVC 폼과 에러 메세지 연동
+타임리프 페이지 레이아웃

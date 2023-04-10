@@ -1,0 +1,1338 @@
+Index: ../day04/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/pom.xml b/../day04/pom.xml
+new file mode 100644
+--- /dev/null	(date 1680829913040)
++++ b/../day04/pom.xml	(date 1680829913040)
+@@ -0,0 +1,79 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>org.koreait</groupId>
++  <artifactId>day04</artifactId>
++  <version>1.0-SNAPSHOT</version>
++  <name>Archetype - day04</name>
++  <url>http://maven.apache.org</url>
++
++  <properties>
++    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++    <maven.compiler.source>19</maven.compiler.source>
++    <maven.compiler.target>19</maven.compiler.target>
++    <spring.version>5.3.26</spring.version>
++  </properties>
++
++  <dependencies>
++
++    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
++    <dependency>
++      <groupId>org.springframework</groupId>
++      <artifactId>spring-context</artifactId>
++      <version>${spring.version}</version>
++    </dependency>
++
++    <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
++    <dependency>
++      <groupId>org.springframework</groupId>
++      <artifactId>spring-jdbc</artifactId>
++      <version>${spring.version}</version>
++    </dependency>
++
++    <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jdbc -->
++    <dependency>
++      <groupId>org.apache.tomcat</groupId>
++      <artifactId>tomcat-jdbc</artifactId>
++      <version>9.0.73</version>
++    </dependency>
++
++    <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 -->
++    <dependency>
++      <groupId>com.oracle.database.jdbc</groupId>
++      <artifactId>ojdbc8</artifactId>
++      <version>21.9.0.0</version>
++    </dependency>
++
++
++    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
++    <dependency>
++      <groupId>org.projectlombok</groupId>
++      <artifactId>lombok</artifactId>
++      <version>1.18.26</version>
++      <scope>provided</scope>
++    </dependency>
++
++    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
++    <!--api, 설계 틀만 제공-->
++    <dependency>
++      <groupId>org.slf4j</groupId>
++      <artifactId>slf4j-api</artifactId>
++      <version>2.0.7</version>
++    </dependency>
++
++    <!--설명이 Implementation of the SLF4J API for Logback 이다. slf4j api의 구현체-->
++    <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
++    <!--<scope>test</scope>는 제거해서 사용한다.-->
++    <dependency>
++      <groupId>ch.qos.logback</groupId>
++      <artifactId>logback-classic</artifactId>
++      <version>1.4.6</version>
++    </dependency>
++
++
++
++
++  </dependencies>
++
++
++</project>
+Index: ../day04/.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/.idea/workspace.xml b/../day04/.idea/workspace.xml
+new file mode 100644
+--- /dev/null	(date 1680836096574)
++++ b/../day04/.idea/workspace.xml	(date 1680836096574)
+@@ -0,0 +1,102 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
++  <component name="ChangeListManager">
++    <list default="true" id="0c8f4123-3ed8-4fb0-bc3b-a60a7e335ffc" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/config/AppCtx.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/main/Ex01.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/models/member/Member.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/models/member/MemberDao.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04_2/.idea/misc.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04_2/.idea/workspace.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04_2/pom.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04_2/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04_2/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04_2/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04_2/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/../day03/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day03/.idea/workspace.xml" afterDir="false" />
++    </list>
++    <option name="SHOW_DIALOG" value="false" />
++    <option name="HIGHLIGHT_CONFLICTS" value="true" />
++    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
++    <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
++  </component>
++  <component name="Git.Settings">
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
++  <component name="MavenImportPreferences">
++    <option name="importingSettings">
++      <MavenImportingSettings>
++        <option name="workspaceImportEnabled" value="true" />
++      </MavenImportingSettings>
++    </option>
++  </component>
++  <component name="ProjectId" id="2O4jkPTtKePzXJT3yKcqZBAzT3J" />
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable&quot;
++  }
++}</component>
++  <component name="RunManager">
++    <configuration name="Ex01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="main.Ex01" />
++      <module name="day04" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="main.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="Application.Ex01" />
++      </list>
++    </recent_temporary>
++  </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
++  <component name="TaskManager">
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="0c8f4123-3ed8-4fb0-bc3b-a60a7e335ffc" name="Changes" comment="" />
++      <created>1680826890628</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1680826890628</updated>
++    </task>
++    <servers />
++  </component>
++</project>
+\ No newline at end of file
+Index: ../day04/src/main/resources/archetype-resources/src/test/java/AppTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/src/main/resources/archetype-resources/src/test/java/AppTest.java b/../day04/src/main/resources/archetype-resources/src/test/java/AppTest.java
+new file mode 100644
+--- /dev/null	(date 1680826894052)
++++ b/../day04/src/main/resources/archetype-resources/src/test/java/AppTest.java	(date 1680826894052)
+@@ -0,0 +1,38 @@
++package $org.koreait;
++
++import junit.framework.Test;
++import junit.framework.TestCase;
++import junit.framework.TestSuite;
++
++/**
++ * Unit test for simple App.
++ */
++public class AppTest 
++    extends TestCase
++{
++    /**
++     * Create the test case
++     *
++     * @param testName name of the test case
++     */
++    public AppTest( String testName )
++    {
++        super( testName );
++    }
++
++    /**
++     * @return the suite of tests being tested
++     */
++    public static Test suite()
++    {
++        return new TestSuite( AppTest.class );
++    }
++
++    /**
++     * Rigourous Test :-)
++     */
++    public void testApp()
++    {
++        assertTrue( true );
++    }
++}
+Index: ../day04/.idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/.idea/compiler.xml b/../day04/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1680826902507)
++++ b/../day04/.idea/compiler.xml	(date 1680826902507)
+@@ -0,0 +1,16 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <excludeFromCompile>
++      <directory url="file://$PROJECT_DIR$/src/main/resources/archetype-resources" includeSubdirectories="true" />
++    </excludeFromCompile>
++    <annotationProcessing>
++      <profile name="Maven default annotation processors profile" enabled="true">
++        <sourceOutputDir name="target/generated-sources/annotations" />
++        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
++        <outputRelativeToContentRoot value="true" />
++        <module name="day04" />
++      </profile>
++    </annotationProcessing>
++  </component>
++</project>
+\ No newline at end of file
+Index: ../day04/.idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/.idea/encodings.xml b/../day04/.idea/encodings.xml
+new file mode 100644
+--- /dev/null	(date 1680826902515)
++++ b/../day04/.idea/encodings.xml	(date 1680826902515)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Encoding">
++    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
++  </component>
++</project>
+\ No newline at end of file
+Index: ../day04/.idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/.idea/jarRepositories.xml b/../day04/.idea/jarRepositories.xml
+new file mode 100644
+--- /dev/null	(date 1680826902525)
++++ b/../day04/.idea/jarRepositories.xml	(date 1680826902525)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Central Repository" />
++      <option name="url" value="https://repo.maven.apache.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: ../day04/src/main/java/config/AppCtx.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/src/main/java/config/AppCtx.java b/../day04/src/main/java/config/AppCtx.java
+new file mode 100644
+--- /dev/null	(date 1680835331779)
++++ b/../day04/src/main/java/config/AppCtx.java	(date 1680835331779)
+@@ -0,0 +1,66 @@
++package config;
++
++
++import org.apache.tomcat.jdbc.pool.DataSource;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.ComponentScan;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.jdbc.core.JdbcTemplate;
++import org.springframework.jdbc.datasource.DataSourceTransactionManager;
++import org.springframework.transaction.PlatformTransactionManager;
++
++@Configuration //스프링 설정 클래스임을 의미한다.
++@ComponentScan("models") //models패키지 하위의 파일을 전부 범위 안에 설정
++//@Component 애노테이션을 붙인 클래스를 스캔해서 스프링 빈으로 등록할 수 있게 해준다.
++public class AppCtx {
++
++
++    @Bean(destroyMethod = "close")
++    //스프링 컨테이너 소멸 시
++    //자동으로 자원 해제를 하도록 설정
++    //메서드 이름 DataSource는 고정이다.(이미 정의되어 있음)
++    public DataSource dataSource(){
++        DataSource ds = new DataSource();
++
++
++        //정의되어 있다.
++        ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
++
++        ds.setUrl("jdbc:oracle:thin:@localhost:1521:orcl");
++
++        ds.setUsername("springdb");
++
++        ds.setPassword("aA123456");
++
++        //커넥션 풀
++        //실제 서버가 아니기 때문에 아주 조금 설정한 상태
++        ds.setInitialSize(2);
++        ds.setMaxActive(10);
++        //체크하도록 설정
++        ds.setTestWhileIdle(true);
++        //체크 주기 3초
++        ds.setTimeBetweenEvictionRunsMillis(3000);
++        //갱신주기 1분
++        ds.setMinEvictableIdleTimeMillis(60000);
++
++
++
++        return ds;
++    }
++    //클래스 이름 JdbcTemplate은 고정이다.(이미 정의되어 있음)
++    @Bean
++    public JdbcTemplate jdbcTemplate(){
++        return new JdbcTemplate(dataSource());
++    }
++
++
++    @Bean
++    //트랜잭션을 자동으로 관리하는 메서드
++    public PlatformTransactionManager transactionManager(){
++        DataSourceTransactionManager tm = new DataSourceTransactionManager();
++        tm.setDataSource(dataSource());
++        return tm;
++    }
++
++
++}
+Index: ../day04/src/main/java/main/Ex01.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/src/main/java/main/Ex01.java b/../day04/src/main/java/main/Ex01.java
+new file mode 100644
+--- /dev/null	(date 1680834322119)
++++ b/../day04/src/main/java/main/Ex01.java	(date 1680834322119)
+@@ -0,0 +1,50 @@
++package main;
++
++import config.AppCtx;
++import lombok.extern.java.Log;
++import models.member.Member;
++import models.member.MemberDao;
++import org.springframework.context.annotation.AnnotationConfigApplicationContext;
++
++import java.util.List;
++
++@Log //lombok에서 Log 변수 추가
++public class Ex01 {
++    public static void main(String[] args){
++        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx.class);
++
++        MemberDao memberDao = ctx.getBean(MemberDao.class);
++
++        Member member = new Member();
++        member.setUserId("user03");
++        member.setUserPw("123456");
++        member.setUserNm("사용자03");
++
++        long userNo = memberDao.insert(member);
++        System.out.println("추가 성공 : " + userNo);
++
++
++        /**
++        boolean result = memberDao.delete("user02");
++        System.out.println("삭제 성공 : " + result);
++        */
++
++        /**
++        List<Member> members = memberDao.gets();
++        members.stream().forEach(System.out::println);
++        */
++
++        /**
++        Member member = memberDao.get("user03");
++
++        if (member != null) {
++            log.info(member.toString());
++        }
++         */
++
++        long total = memberDao.getTotal();
++        log.info("총 회원 수 : " + total);
++
++        ctx.close();
++    }
++}
+Index: ../day04/src/main/java/models/member/MemberDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/src/main/java/models/member/MemberDao.java b/../day04/src/main/java/models/member/MemberDao.java
+new file mode 100644
+--- /dev/null	(date 1680836094580)
++++ b/../day04/src/main/java/models/member/MemberDao.java	(date 1680836094580)
+@@ -0,0 +1,144 @@
++package models.member;
++
++
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.jdbc.core.JdbcTemplate;
++import org.springframework.jdbc.core.PreparedStatementCreator;
++import org.springframework.jdbc.core.RowMapper;
++import org.springframework.jdbc.support.GeneratedKeyHolder;
++import org.springframework.jdbc.support.KeyHolder;
++import org.springframework.stereotype.Component;
++import org.springframework.transaction.annotation.Transactional;
++
++import java.sql.Connection;
++import java.sql.PreparedStatement;
++import java.sql.ResultSet;
++import java.sql.SQLException;
++import java.util.List;
++
++@Component //스프링으로 검색해서 빈으로 등록하게 할 수 있게 하는 애노테이션.
++@Transactional //메서드에 달아도 되고, 클래스에 달아도 된다.
++//프록시와 비슷하게, autoCommit(false)설정 등 필요한 설정들을 대신 해준다.
++public class MemberDao {
++
++    private JdbcTemplate jdbcTemplate;
++
++    @Autowired //의존성 자동 주입
++    public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
++        this.jdbcTemplate = jdbcTemplate;
++    }
++
++    /**
++     * 회원 정보 추가
++     * @param member
++     */
++    public long insert(Member member){
++        String sql = "INSERT INTO MEMBER(userNo, userId, userPw, userNm) " +
++                    " VALUES (SEQ_MEMBER.nextval, ?, ?, ?)";
++        KeyHolder keyHolder = new GeneratedKeyHolder();
++        int cnt = jdbcTemplate.update(c -> {
++                PreparedStatement pstmt = c.prepareStatement(sql, new String[]{"userNo"});
++                //순서는 1,2,3,4,...
++                pstmt.setString(1, member.getUserId());
++                pstmt.setString(2, member.getUserPw());
++                pstmt.setString(3, member.getUserNm());
++                return pstmt;
++        }, keyHolder);
++        Number keyValue = keyHolder.getKey(); //증감번호 - long, int인지 특정할수 없기 때문에 상위 래퍼클래스인 Number 사용
++        //keyholder의 값을 가져와서 keyValue에 넣고, userNo에 투입
++        long userNo = keyValue.longValue();
++        return userNo;
++    }
++
++    /**
++    public boolean insert(Member member){
++
++        String sql = "INSERT INTO MEMBER (userNo, userId, userPw, userNm) " +
++                        //한칸 띄워야 한다.
++                        " VALUES (SEQ_MEMBER.nextval, ?, ?, ?)";
++
++        int cnt = jdbcTemplate.update(sql, member.getUserId(), member.getUserPw(), member.getUserNm());
++        // cnt - 반영된 레코드 갯수 -> 0개 이상 나오면 성공.
++
++        //true인지 false인지 return.
++        return cnt > 0;
++    }
++     */
++
++    /**
++     * 회원정보를 아이디로 조회
++     * @param userId
++     * @return
++     */
++    public Member get(String userId){
++        try {
++            String sql = "SELECT * FROM MEMBER WHERE userId = ?";
++            Member member = jdbcTemplate.queryForObject(sql, this::memberMapper, userId);
++            return member;
++        }catch (Exception e){
++            return null;
++        }
++    }
++
++    /**
++     * 회원 목록 조회
++     *
++     * @return
++     */
++    public List<Member> gets(){
++       String sql = "SELECT * FROM MEMBER";
++       //RowMapper<T> rowMapper = 인터페이스,
++        // Object...args = 추가로 매개변수에 넣은 값을 넣을 때
++       List<Member> members = jdbcTemplate.query(sql, this::memberMapper);
++       return members;
++    }
++
++    private Member memberMapper(ResultSet rs, int i) throws SQLException{
++
++        //데이터 조회 인터페이스
++        //쿼리 식별 결과를 매핑..?
++
++        Member member = new Member();
++        //이름값 기준으로 USERNO를 찾은다음 그 값을 long 형태로 읽어서,
++        //member의 UserNo에 넣어준다.
++        //이하 같은 원리
++        member.setUserNo(rs.getLong("USERNO"));
++        member.setUserId(rs.getString("USERID"));
++        member.setUserPw(rs.getString("USERPW"));
++        member.setUserNm(rs.getString("USERNM"));
++        member.setRegDt(rs.getTimestamp("regDt").toLocalDateTime());
++
++        return member;
++    }
++
++
++
++
++    /**
++     * 회원 정보의 삭제
++     * @param userId
++     * @return
++     */
++    public boolean delete(String userId){
++
++        String sql = "DELETE FROM MEMBER WHERE userId = ?";
++
++        int cnt = jdbcTemplate.update(sql, userId);
++
++        return cnt > 0;
++    }
++
++    /**
++     * 전체 회원 수
++     * @return
++     */
++    public long getTotal(){
++        long total = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM MEMBER", long.class);
++
++        return total;
++    }
++
++
++
++
++}
+Index: ../day04/src/main/resources/META-INF/maven/archetype.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/src/main/resources/META-INF/maven/archetype.xml b/../day04/src/main/resources/META-INF/maven/archetype.xml
+new file mode 100644
+--- /dev/null	(date 1680826894053)
++++ b/../day04/src/main/resources/META-INF/maven/archetype.xml	(date 1680826894053)
+@@ -0,0 +1,9 @@
++<archetype>
++  <id>day04</id>
++  <sources>
++    <source>src/main/java/App.java</source>
++  </sources>
++  <testSources>
++    <source>src/test/java/AppTest.java</source>
++  </testSources>
++</archetype>
+Index: ../day04/src/main/resources/logback.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/src/main/resources/logback.xml b/../day04/src/main/resources/logback.xml
+new file mode 100644
+--- /dev/null	(date 1680830177970)
++++ b/../day04/src/main/resources/logback.xml	(date 1680830177970)
+@@ -0,0 +1,16 @@
++<?xml version="1.0" encoding="UTF-8" ?>
++
++<configuration>
++    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
++        <encoder>
++            <!--날짜, %m = 메세지-->
++            <pattern>%d %5p %c{2} - %m%n</pattern>
++        </encoder>
++    </appender>
++    <!--기본 레벨. INFO부터 위로의 로그만 출력-->
++    <root level="INFO">
++        <appender-ref ref="stdout" />
++    </root>
++    <!--특정 패키지의 로그만 자세히 보고싶을때, 따로 설정한 예시-->
++    <logger name="org.springframework.jdbc" level="DEBUG" />
++</configuration>
+\ No newline at end of file
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+new file mode 100644
+--- /dev/null	(date 1680837055910)
++++ b/pom.xml	(date 1680837055910)
+@@ -0,0 +1,49 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>org.koreait</groupId>
++  <artifactId>day04_2</artifactId>
++  <version>1.0-SNAPSHOT</version>
++  <name>Archetype - day04_2</name>
++  <url>http://maven.apache.org</url>
++
++  <properties>
++    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++    <maven.compiler.source>19</maven.compiler.source>
++    <maven.compiler.target>19</maven.compiler.target>
++    <spring.version>5.3.26</spring.version>
++  </properties>
++
++<dependencies>
++
++  <!--프레임워크인 스프링프레임워크 추가 부분-->
++  <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
++  <dependency>
++    <groupId>org.springframework</groupId>
++    <artifactId>spring-webmvc</artifactId>
++    <version>${spring.version}</version>
++  </dependency>
++
++  <!--서버 웹 기술인 java servlet 추가부분-->
++  <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
++  <!--<scope>provided</scope> 는 배포시에 제거될 설정임을 알려준다.-->
++  <dependency>
++    <groupId>javax.servlet</groupId>
++    <artifactId>javax.servlet-api</artifactId>
++    <version>4.0.1</version>
++    <scope>provided</scope>
++  </dependency>
++
++  <!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
++  <dependency>
++    <groupId>javax.servlet.jsp</groupId>
++    <artifactId>javax.servlet.jsp-api</artifactId>
++    <version>2.3.3</version>
++    <scope>provided</scope>
++  </dependency>
++
++
++
++</dependencies>
++
++</project>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+new file mode 100644
+--- /dev/null	(date 1680839268943)
++++ b/.idea/workspace.xml	(date 1680839268943)
+@@ -0,0 +1,121 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
++  <component name="ChangeListManager">
++    <list default="true" id="2e0d40ad-4a5a-4908-9ce3-eca767e66094" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/../day04/.idea/compiler.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/.idea/encodings.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/.idea/jarRepositories.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/.idea/misc.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/.idea/vcs.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/.idea/workspace.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/pom.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/src/main/java/config/AppCtx.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/src/main/java/main/Ex01.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/src/main/java/models/member/Member.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/src/main/java/models/member/MemberDao.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../day04/src/main/resources/logback.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/config/ControllerConfig.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/config/MvcConfig.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/HelloController.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/hello.jsp" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/../day03/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day03/.idea/workspace.xml" afterDir="false" />
++    </list>
++    <option name="SHOW_DIALOG" value="false" />
++    <option name="HIGHLIGHT_CONFLICTS" value="true" />
++    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
++    <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
++  </component>
++  <component name="Git.Settings">
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
++  </component>
++  <component name="LogFilters">
++    <option name="FILTER_ERRORS" value="false" />
++    <option name="FILTER_WARNINGS" value="false" />
++    <option name="FILTER_INFO" value="true" />
++    <option name="FILTER_DEBUG" value="true" />
++    <option name="CUSTOM_FILTER" />
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
++  <component name="MavenImportPreferences">
++    <option name="importingSettings">
++      <MavenImportingSettings>
++        <option name="workspaceImportEnabled" value="true" />
++      </MavenImportingSettings>
++    </option>
++  </component>
++  <component name="ProjectId" id="2O51fcysOF9JCU29tGD6fAcPHXF" />
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable&quot;
++  }
++}</component>
++  <component name="RunManager">
++    <configuration name="tomcat9" type="com.poratu.idea.plugins.tomcat">
++      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
++      <predefined_log_file enabled="true" id="Tomcat Access Log" />
++      <predefined_log_file id="Tomcat Catalina Log" />
++      <predefined_log_file id="Tomcat Manager Log" />
++      <predefined_log_file id="Tomcat Host Manager Log" />
++      <option name="contextPath" value="/day04_2" />
++      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
++      <option name="envOptions">
++        <map />
++      </option>
++      <option name="extraClassPath" value="" />
++      <option name="port" value="3000" />
++      <option name="tomcatInfo">
++        <TomcatInfo>
++          <option name="name" value="Apache Tomcat/9.0.73 (5)" />
++          <option name="path" value="$PROJECT_DIR$/../../../apache-tomcat-9.0.73" />
++          <option name="version" value="9.0.73.0" />
++        </TomcatInfo>
++      </option>
++      <option name="vmOptions" value="" />
++      <module name="day04_2" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++  </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
++  <component name="TaskManager">
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="2e0d40ad-4a5a-4908-9ce3-eca767e66094" name="Changes" comment="" />
++      <created>1680835732157</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1680835732157</updated>
++    </task>
++    <servers />
++  </component>
++</project>
+\ No newline at end of file
+Index: src/main/java/config/MvcConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/config/MvcConfig.java b/src/main/java/config/MvcConfig.java
+new file mode 100644
+--- /dev/null	(date 1680839042070)
++++ b/src/main/java/config/MvcConfig.java	(date 1680839042070)
+@@ -0,0 +1,21 @@
++package config;
++
++import org.springframework.context.annotation.Configuration;
++import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
++import org.springframework.web.servlet.config.annotation.EnableWebMvc;
++import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
++import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
++
++@Configuration
++@EnableWebMvc //웹 기본 설정을 거의 다 해주는 애노테이션
++public class MvcConfig implements WebMvcConfigurer {
++    @Override
++    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
++        configurer.enable(); //자바스크립트, 스타일 시트 등 스프링에서 처리 할 수 없는 정적 자원들을 대신 설정해준다.
++    }
++
++    @Override
++    public void configureViewResolvers(ViewResolverRegistry registry) {
++        registry.jsp("/WEB-INF/view/", ".jsp");
++    }
++}
+Index: src/main/webapp/WEB-INF/web.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/WEB-INF/web.xml b/src/main/webapp/WEB-INF/web.xml
+new file mode 100644
+--- /dev/null	(date 1680839598261)
++++ b/src/main/webapp/WEB-INF/web.xml	(date 1680839598261)
+@@ -0,0 +1,44 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
++    <servlet>
++        <servlet-name>dispatcher</servlet-name>
++        <servlet-class>
++            org.springframework.web.servlet.DispatcherServlet
++        </servlet-class>
++        <init-param>
++            <param-name>contextClass</param-name>
++            <param-value>
++                org.springframework.web.context.support.AnnotationConfigWebApplicationContext
++            </param-value>
++        </init-param>
++        <init-param>
++            <param-name>contextConfigLocation</param-name>
++            <param-value>
++                config.MvcConfig
++                config.ControllerConfig
++            </param-value>
++        </init-param>
++        <load-on-startup>1</load-on-startup>
++    </servlet>
++
++    <servlet-mapping>
++        <servlet-name>dispatcher</servlet-name>
++        <url-pattern>/</url-pattern>
++    </servlet-mapping>
++
++    <filter>
++        <filter-name>encodingFilter</filter-name>
++        <filter-class>
++            org.springframework.web.filter.CharacterEncodingFilter
++        </filter-class>
++        <init-param>
++            <param-name>encoding</param-name>
++            <param-value>UTF-8</param-value>
++        </init-param>
++    </filter>
++    <filter-mapping>
++        <filter-name>encodingFilter</filter-name>
++        <url-pattern>/*</url-pattern>
++    </filter-mapping>
++
++</web-app>
+\ No newline at end of file
+Index: src/main/java/controllers/HelloController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/controllers/HelloController.java b/src/main/java/controllers/HelloController.java
+new file mode 100644
+--- /dev/null	(date 1680839042076)
++++ b/src/main/java/controllers/HelloController.java	(date 1680839042076)
+@@ -0,0 +1,17 @@
++package controllers;
++
++import org.springframework.stereotype.Controller;
++import org.springframework.web.bind.annotation.GetMapping;
++
++@Controller //요청을 처리할수 있는 특수한 목적의 관리객체
++public class HelloController {
++    //어떤 요청을 처리할 것인가? 알려줘야함.
++
++    //hello에 들어온 GET방식의 요청을 처리하는 매핑
++    @GetMapping("/hello")
++    public String hello(){
++
++        return "hello"; // /WEB-INF/view/hello.jsp
++    }
++
++}
+Index: src/main/java/config/ControllerConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/config/ControllerConfig.java b/src/main/java/config/ControllerConfig.java
+new file mode 100644
+--- /dev/null	(date 1680839042080)
++++ b/src/main/java/config/ControllerConfig.java	(date 1680839042080)
+@@ -0,0 +1,14 @@
++package config;
++
++import controllers.HelloController;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++
++@Configuration
++public class ControllerConfig {
++
++    @Bean
++    public HelloController helloController(){
++        return new HelloController();
++    }
++}
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1680835732594)
++++ b/.idea/misc.xml	(date 1680835732594)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="MavenProjectsManager">
++    <option name="originalFiles">
++      <list>
++        <option value="$PROJECT_DIR$/pom.xml" />
++      </list>
++    </option>
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="19" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: ../day04/src/main/resources/archetype-resources/src/main/java/App.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/src/main/resources/archetype-resources/src/main/java/App.java b/../day04/src/main/resources/archetype-resources/src/main/java/App.java
+new file mode 100644
+--- /dev/null	(date 1680826894051)
++++ b/../day04/src/main/resources/archetype-resources/src/main/java/App.java	(date 1680826894051)
+@@ -0,0 +1,13 @@
++package $org.koreait;
++
++/**
++ * Hello world!
++ *
++ */
++public class App 
++{
++    public static void main( String[] args )
++    {
++        System.out.println( "Hello World!" );
++    }
++}
+Index: ../day04/src/main/resources/archetype-resources/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/src/main/resources/archetype-resources/pom.xml b/../day04/src/main/resources/archetype-resources/pom.xml
+new file mode 100644
+--- /dev/null	(date 1680826894049)
++++ b/../day04/src/main/resources/archetype-resources/pom.xml	(date 1680826894049)
+@@ -0,0 +1,15 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>$org.koreait</groupId>
++  <artifactId>$day04</artifactId>
++  <version>$1.0-SNAPSHOT</version>
++  <dependencies>
++    <dependency>
++      <groupId>junit</groupId>
++      <artifactId>junit</artifactId>
++      <version>3.8.1</version>
++      <scope>test</scope>
++    </dependency>
++  </dependencies>
++</project>
+Index: src/main/webapp/WEB-INF/view/hello.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/WEB-INF/view/hello.jsp b/src/main/webapp/WEB-INF/view/hello.jsp
+new file mode 100644
+--- /dev/null	(date 1680839120321)
++++ b/src/main/webapp/WEB-INF/view/hello.jsp	(date 1680839120321)
+@@ -0,0 +1,2 @@
++<%@ page contentType="text/html; charset=utf-8" %>
++안녕하세요!
+\ No newline at end of file
+Index: src/main/resources/META-INF/maven/archetype.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/META-INF/maven/archetype.xml b/src/main/resources/META-INF/maven/archetype.xml
+new file mode 100644
+--- /dev/null	(date 1680835734969)
++++ b/src/main/resources/META-INF/maven/archetype.xml	(date 1680835734969)
+@@ -0,0 +1,9 @@
++<archetype>
++  <id>day04_2</id>
++  <sources>
++    <source>src/main/java/App.java</source>
++  </sources>
++  <testSources>
++    <source>src/test/java/AppTest.java</source>
++  </testSources>
++</archetype>
+Index: ../day04/src/main/java/models/member/Member.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/src/main/java/models/member/Member.java b/../day04/src/main/java/models/member/Member.java
+new file mode 100644
+--- /dev/null	(date 1680828586519)
++++ b/../day04/src/main/java/models/member/Member.java	(date 1680828586519)
+@@ -0,0 +1,17 @@
++package models.member;
++
++import lombok.Data;
++
++import java.time.LocalDateTime;
++
++@Data //lombok 기능. getter, setter 등 자동설정하는 애노테이션
++public class Member {
++
++    private long userNo;
++    private String userId;
++    private String userPw;
++    private String userNm;
++    private LocalDateTime regDt;
++
++
++}
+Index: src/main/resources/archetype-resources/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/archetype-resources/pom.xml b/src/main/resources/archetype-resources/pom.xml
+new file mode 100644
+--- /dev/null	(date 1680835734965)
++++ b/src/main/resources/archetype-resources/pom.xml	(date 1680835734965)
+@@ -0,0 +1,15 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>$org.koreait</groupId>
++  <artifactId>$day04_2</artifactId>
++  <version>$1.0-SNAPSHOT</version>
++  <dependencies>
++    <dependency>
++      <groupId>junit</groupId>
++      <artifactId>junit</artifactId>
++      <version>3.8.1</version>
++      <scope>test</scope>
++    </dependency>
++  </dependencies>
++</project>
+Index: ../day03/.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"7a236440-81b0-445e-ba77-3d762b6374e9\" name=\"Changes\" comment=\"\">\n      <change afterPath=\"$PROJECT_DIR$/.idea/compiler.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/encodings.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/jarRepositories.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/uiDesigner.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/config/AppCtx.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/config/CachedProxy.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/config/CommonPointcut.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/config/ProxyCalculator2.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam01/Calculator.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam01/Ex01.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam01/Ex02.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam01/ImplCalculator.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam01/ProxyCalculator.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam01/RecCalculator.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam02/Calculator.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam02/RecCalculator.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam03/config/AppCtx.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam03/config/Ex01.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam03/config/TestDao.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/main/Ex01.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/main/Ex02.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/archetype-resources/pom.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/archetype-resources/src/main/java/App.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/../day02/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/../day02/.idea/workspace.xml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Interface\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"importingSettings\">\n      <MavenImportingSettings>\n        <option name=\"workspaceImportEnabled\" value=\"true\" />\n      </MavenImportingSettings>\n    </option>\n  </component>\n  <component name=\"ProjectId\" id=\"2O1soYwwi3wS5Hcnkq3S6cD4iM9\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\n    \"last_opened_file_path\": \"C:/Users/Administrator/Desktop/성민수/6.서버프로그램 구현/spring_study/day03/src/main/java/exam02\",\n    \"project.structure.last.edited\": \"Modules\",\n    \"project.structure.proportion\": \"0.0\",\n    \"project.structure.side.proportion\": \"0.0\",\n    \"settings.editor.selected.configurable\": \"com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable\"\n  }\n}]]></component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\Administrator\\Desktop\\성민수\\6.서버프로그램 구현\\spring_study\\day03\\src\\main\\java\\exam02\" />\n    </key>\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\n      <recent name=\"exam02\" />\n    </key>\n  </component>\n  <component name=\"RunAnythingCache\">\n    <option name=\"myCommands\">\n      <command value=\"mvn clean\" />\n    </option>\n  </component>\n  <component name=\"RunManager\" selected=\"Application.exam03.config.Ex01\">\n    <configuration name=\"Ex01\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"exam01.Ex01\" />\n      <module name=\"day03\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"exam01.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"Ex02\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"exam01.Ex02\" />\n      <module name=\"day03\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"exam01.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"exam03.config.Ex01\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"exam03.config.Ex01\" />\n      <module name=\"day03\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"exam03.config.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"main.Ex01\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"main.Ex01\" />\n      <module name=\"day03\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"main.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"main.Ex02\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"main.Ex02\" />\n      <module name=\"day03\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"main.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.exam03.config.Ex01\" />\n        <item itemvalue=\"Application.main.Ex02\" />\n        <item itemvalue=\"Application.main.Ex01\" />\n        <item itemvalue=\"Application.Ex02\" />\n        <item itemvalue=\"Application.Ex01\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"7a236440-81b0-445e-ba77-3d762b6374e9\" name=\"Changes\" comment=\"\" />\n      <created>1680739597352</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1680739597352</updated>\n    </task>\n    <servers />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day03/.idea/workspace.xml b/../day03/.idea/workspace.xml
+--- a/../day03/.idea/workspace.xml	(revision bb56ce73a3b25540865ca18ac6affae60ec509d6)
++++ b/../day03/.idea/workspace.xml	(date 1680755964652)
+@@ -4,37 +4,8 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="7a236440-81b0-445e-ba77-3d762b6374e9" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/config/AppCtx.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/config/CachedProxy.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/config/CommonPointcut.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/config/ProxyCalculator2.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam01/Calculator.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam01/Ex01.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam01/Ex02.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam01/ImplCalculator.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam01/ProxyCalculator.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam01/RecCalculator.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam02/Calculator.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam02/RecCalculator.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam03/config/AppCtx.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam03/config/Ex01.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam03/config/TestDao.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/main/Ex01.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/main/Ex02.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/../day02/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/.idea/workspace.xml" afterDir="false" />
++    <list default="true" id="7a236440-81b0-445e-ba77-3d762b6374e9" name="Changes" comment="&quot;23.04.06 메모 추가&quot;">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -177,6 +148,26 @@
+       <option name="presentableId" value="Default" />
+       <updated>1680739597352</updated>
+     </task>
++    <task id="LOCAL-00001" summary="&quot;23.04.06 수업내용 추가&quot;">
++      <created>1680755751938</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1680755751938</updated>
++    </task>
++    <task id="LOCAL-00002" summary="&quot;23.04.06 메모 추가&quot;">
++      <created>1680755904033</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1680755904033</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="&quot;23.04.06 수업내용 추가&quot;" />
++    <MESSAGE value="&quot;23.04.06 메모 추가&quot;" />
++    <option name="LAST_COMMIT_MESSAGE" value="&quot;23.04.06 메모 추가&quot;" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: src/main/resources/archetype-resources/src/main/java/App.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/archetype-resources/src/main/java/App.java b/src/main/resources/archetype-resources/src/main/java/App.java
+new file mode 100644
+--- /dev/null	(date 1680835734966)
++++ b/src/main/resources/archetype-resources/src/main/java/App.java	(date 1680835734966)
+@@ -0,0 +1,13 @@
++package $org.koreait;
++
++/**
++ * Hello world!
++ *
++ */
++public class App 
++{
++    public static void main( String[] args )
++    {
++        System.out.println( "Hello World!" );
++    }
++}
+Index: src/main/resources/archetype-resources/src/test/java/AppTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/archetype-resources/src/test/java/AppTest.java b/src/main/resources/archetype-resources/src/test/java/AppTest.java
+new file mode 100644
+--- /dev/null	(date 1680835734969)
++++ b/src/main/resources/archetype-resources/src/test/java/AppTest.java	(date 1680835734969)
+@@ -0,0 +1,38 @@
++package $org.koreait;
++
++import junit.framework.Test;
++import junit.framework.TestCase;
++import junit.framework.TestSuite;
++
++/**
++ * Unit test for simple App.
++ */
++public class AppTest 
++    extends TestCase
++{
++    /**
++     * Create the test case
++     *
++     * @param testName name of the test case
++     */
++    public AppTest( String testName )
++    {
++        super( testName );
++    }
++
++    /**
++     * @return the suite of tests being tested
++     */
++    public static Test suite()
++    {
++        return new TestSuite( AppTest.class );
++    }
++
++    /**
++     * Rigourous Test :-)
++     */
++    public void testApp()
++    {
++        assertTrue( true );
++    }
++}
+Index: ../day04/.idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/.idea/vcs.xml b/../day04/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1680826892337)
++++ b/../day04/.idea/vcs.xml	(date 1680826892337)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: ../day04/.idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../day04/.idea/misc.xml b/../day04/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1680826891818)
++++ b/../day04/.idea/misc.xml	(date 1680826891818)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="MavenProjectsManager">
++    <option name="originalFiles">
++      <list>
++        <option value="$PROJECT_DIR$/pom.xml" />
++      </list>
++    </option>
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="19" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file

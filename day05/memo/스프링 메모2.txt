@@ -1,0 +1,35 @@
+스프링 웹 MVC
+
+1. 요청 매핑
+
+요청 방식 -
+GET - @GetMapping
+	- DELETE - @DeleteMapping
+
+POST - @PostMapping
+	- PUT : @PutMapping
+	- PATCH : @PatchMapping
+
+@RequestMapping : 모든 요청 : 공통 URL
+		- method
+		
+2. 커맨드 객체
+- EL 식 변수(속성) 자동 추가  클래스명 앞자만 소문자로 한 변수명
+Join -> join
+MemberJoin -> memberJoin
+
+3. 리다이렉트
+
+HttpServletResponse
+	sendRedirect(주소)
+	-> 응답 헤더 : Location : 주소
+	
+	스프링 ->
+	반환값의 문자열 "redirect:주소"
+
+4. 폼 태그
+
+5. 모델
+Model - 뷰에서 사용할 데이터
+		- EL 변수 (속성)
+

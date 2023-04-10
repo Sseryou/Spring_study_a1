@@ -1,0 +1,499 @@
+Index: memo/스프링DI 메모.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/memo/스프링DI 메모.txt b/memo/스프링DI 메모.txt
+new file mode 100644
+--- /dev/null	(date 1680668822595)
++++ b/memo/스프링DI 메모.txt	(date 1680668822595)
+@@ -0,0 +1,121 @@
++스프링 DI 설정 및 사용
++
++1. 스프링을 이용할 객체 조립과 사용
++
++2.@Configuration
++	-설정 클래스
++	-스프링이 관리할 객체의 설정
++	
++3.@Bean
++	- 스프링이 관리할 객체
++	
++	
++
++4. @Autowired
++	- 의존성 자동 주입
++	- 스프링이 대신 의존성 주입
++	
++5. @import
++- 두 개 이상의 설정파일 설정하기
++
++6. @Qualifier
++- 의존 주입시 충돌 해결 방법
++
++
++7. @Autowired ★
++- 의존성 자동 주입
++
++1) 멤버 변수
++2) setter 형태의 메서드의 매개변수
++	-> 매개 변수에 의존성을 주입, setter 메서드를 자동 호출
++3) Optional ...
++4) 생성자 매개 변수 - @Autowired를 사용하지 않고, 
++@ComponentScan과 함께 사용
++			
++			
++-required : 기본값이 true
++				-반드시 의존성을 해결할 수 있는 스프링 관리 객체 O
++				- 없으면 오류 발생
++				false
++				-의존성이 없으면 setter 형태 메서드는 호출 X
++				
++				참고)
++				required가 true일때 의존성이 없는 경우
++				
++				@Nullable 
++					- 의존이 없어도 setter 형태 메서드를 호출 O
++					- 의존성이 없으면 null값을 매개변수로 주입
++
++컴포넌트 스캔 
++
++1. @ComponentScan
++		- basePackages
++			- 스캔범위가 되는 패키지
++			-  패키지를 포함한 하위 모든 경로와 모든 클래스가 스캔 범위
++			- 특정 스캔 범위를 포함하거나 제거할 수 있다.
++			
++2. 기본 스캔 대상
++
++	-주로 사용-(역할이 따로 연결되지 않음)
++	@Component
++	@Service
++	
++	-기능연관 애노테이션-
++	@Configuration - 역할을 정해주는 애노테이션
++	@Controller - URL 처리
++	@Repository  - 데이터 베이스 관련
++	@Aspect - 공통기능
++	
++- 스캔 범위에 있는 클래스 위에 상기 애노테이션이 있으면 알아서 스프링 관리객체(Bean)을 생성
++- 빈 이름 -> 클래스명에서 가장 앞 알파벳만 소문자로 만들고 이름을 생성
++예) MemberDao -> memberDao
++
++			-> 패키지명 관계없이 무조건 클래스명으로 만든다. (문제가 된다.)
++			-> 빈 이름이 동일하면 충돌 -> 오류(ConflictingBeanDefinitionException)
++			
++			-> 이름을 쉽게 바꿀 수 있는 애노테이션 기능을 제공한다. 예) @Component("memberDao2")
++
++
++스캔 범위 제외
++	excludeFilters
++			-@Filter
++				type -FilterType
++							.ANNOTATION - 지정된 애노테이션이 있는 클래스는 스캔 범위에서 제외
++							.ASSIGNABLE_TYPE - 클래스명
++								-classes
++							
++							.REGEX - 정규 표현식
++							.ASPECTJ - ANT 패턴(spring-aop(구현체 없음), aspectJweaver(다른 구현체가 필요하므로, 이 구현체를 사용한다.))
++								- pattern
++								
++										* -> 하위 파일(하위 클래스), 하위 메서드
++										** -> 현재 경로 포함 하위 경로
++												(현재 패키지 포함 하위 패키지 + 모든 클래스)...
++										? -> 문자 1
++										
++										예) m?1 -> m01, ma1...
++								
++								
++								
++빈 라이프 사이클과 범위
++1. 객체 생성 -> 의존 설정 -> 초기화 -> 소멸
++
++2. InitializingBean
++	- afterPropertySet() : 초기화 단계에서 실행
++	
++3. DisposableBean
++	- destroy() : 소멸 단계에서 호출
++	
++4. @Bean : initMethod, destroyMethod
++	- 데이터베이스 설정할때 사용할 것
++	
++	- initMethod : 초기화 단계에서 호출될 메서드를 설정 (단, 메서드의 매개변수 X)
++	- destroyMethod : 소멸단계에서 호출될 메서드를 설정 (단, 메서드의 매개변수 X)
++	
++
++
++빈 객체의 생성과 관리 범위
++
++1. @Scope
++		- singleton -> 기본값
++		- prototype -> 인스턴스가 매번 생성
+\ No newline at end of file
+Index: memo/0405메모.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/memo/0405메모.txt b/memo/0405메모.txt
+new file mode 100644
+--- /dev/null	(date 1680668747732)
++++ b/memo/0405메모.txt	(date 1680668747732)
+@@ -0,0 +1,69 @@
++의존하는 것들은 생성자 메서드를 통해 외부에서 주입받는 형태로,
++주입하는것은 외부에서 관리하기 편하게 모아놓은 형태로.
++
++통제가 불가능한 부분은 막아야 한다.
++(private...)
++확장이 용이한 부분은 개방한다.
++
++다형성, 캡슐화
++객체지향...
++
++포트폴리오 4월 중순...
++
++컨트롤 왼쪽키 -> 설명 보기...
++
++----------------------------------------------------------------------------
++
++ioc
++제어의 역전
++개발자가 객체를 만들고, 제어했지만,
++스프링이 제어의 역할을 맡게 된다. (다양한 방식으로 관리)
++
++AOP
++
++proxy = 대리하다
++
++핵심적인 로직만 구현하면, 스프링이 거의 다 해준다.
++
++애노테이션을 통해 스프링에게 알려준다.
++핵심 - 객체 관리
++
++스프링을 명확하게 이해해야 부트도 잘 쓸 수 있다.
++
++스프링은 객체를 컨테이너에 넣어놓고 관리한다.
++의존하는게 있는지 없는지 체크한다.
++@Autowired를 달면, 의존 형태로 되어있는 메서드를 인식해서
++컨테이너에서 객체를 꺼내서 주입해준다.
++
++스프링은 관리 객체만 관리한다.
++@Bean을 꼭 달아주어야 한다.
++
++외부 라이브러리도 @Bean을 달면 쓸 수 있는지 확인해봐야 할듯
++
++@Bean에서 주입 -> @Autowired에서 주입받음...
++
++@Autowired(required = false) = 의존성이 없어도 오류가 발생하지 않게 된다.
++----------------------------------------------------------------------------
++mvn 리포지토리
++
++Spring Context
++5.3.26버전 사용
++
++Project Lombok
++1.18.26
++------------------------------------------------------------------------------------
++스프링 라이프사이클
++
++1. 객체 생성 - 설정 클래스 (스프링 컨테이너 안에다가 객체를 만든다.)
++2. 의존성 주입 (객체가 있어야만 주입이 된다.)(@Autowired, 생성자 매개변수)
++3. 초기화
++	- 의존성 주입 이후에 초기 작업이 있다면
++	- InitializingBean 인터페이스
++		- afterPropertySet -> 호출
++		
++4. 소멸
++	 - close() 메서드가 호출
++		- 자원해제 과정, 웹 서버는 항상 켜져 있기 때문에 따로 자원해제를 해주어야 한다.
++	 - 객체를 소멸하기전
++	 - DisposableBean 인터페이스
++		- destroy 메서드 호출
+Index: memo/dependency 등 조금 메모.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/memo/dependency 등 조금 메모.txt b/memo/dependency 등 조금 메모.txt
+new file mode 100644
+--- /dev/null	(date 1680668792131)
++++ b/memo/dependency 등 조금 메모.txt	(date 1680668792131)
+@@ -0,0 +1,39 @@
++스프링 버전을 변수로 만들어 적용하는 방법
++
++<properties>
++    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++    <maven.compiler.source>19</maven.compiler.source>
++    <maven.compiler.target>19</maven.compiler.target>
++    <spring.version>5.3.26</spring.version>
++  </properties>
++
++<dependencies>
++
++
++  <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
++  <dependency>
++    <groupId>org.springframework</groupId>
++    <artifactId>spring-context</artifactId>
++    <version>${spring.version}</version>
++  </dependency>
++  
++  
++   AnnotationConfigApplicationContext
++   
++    AnnotationConfig ApplicationContext로 분리해서 읽으면 편하다...
++	
++	
++	
++	AspectJ Weaver (구현체)
++	1.9.19버전 사용
++	업데이트 날짜를 잘 볼것...최신버전인걸로...
++	
++	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
++<dependency>
++    <groupId>org.aspectj</groupId>
++    <artifactId>aspectjweaver</artifactId>
++    <version>1.9.19</version>
++    <scope>runtime</scope>
++</dependency>
++
++//scope는 제거해서 사용한다....
+Index: memo/스프링 애노테이션 메모.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/memo/스프링 애노테이션 메모.txt b/memo/스프링 애노테이션 메모.txt
+new file mode 100644
+--- /dev/null	(date 1680668841103)
++++ b/memo/스프링 애노테이션 메모.txt	(date 1680668841103)
+@@ -0,0 +1,32 @@
++스프링은 객체를 담아둔다.
++필요한 것들을 알려주면, 담아서 관리한다.
++
++1. @Configuration //스프링 사용 설정
++
++2. @Bean //스프링 관리객체로 만듬.
++
++3. @Autowired //의존성 자동주입
++	1)멤버 변수
++	2)setter형태의 매개변수
++	3)Optional
++	4)@Autowired를 사용하지 않고 주입(@ComponentScan ....)
++		-생성자 매개변수 (기본생성자가 X)
++	
++	
++4. @Import
++5. @Qualifier //이름이 동일할 때 이름을 정해서 분배용도
++
++6. @ComponentScan //Bean이 너무 많을때 범위를 정하기 위한 용도
++	
++ - 용도가 한정되지 않아 자유롭게 사용 -
++	- @Component
++	- @Service
++	
++	- 기능연관 , 용도가 한정됨-
++	- @Configuration
++	- @Controller
++		@RestController
++	- @Repository
++	- @Aspect
++	/ @ControllerAdvice
++		@RestControllerAdvice
+Index: target/classes/META-INF/maven/archetype.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/META-INF/maven/archetype.xml b/target/classes/META-INF/maven/archetype.xml
+new file mode 100644
+--- /dev/null	(date 1680653596502)
++++ b/target/classes/META-INF/maven/archetype.xml	(date 1680653596502)
+@@ -0,0 +1,9 @@
++<archetype>
++  <id>day02</id>
++  <sources>
++    <source>src/main/java/App.java</source>
++  </sources>
++  <testSources>
++    <source>src/test/java/AppTest.java</source>
++  </testSources>
++</archetype>
+Index: target/classes/archetype-resources/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/archetype-resources/pom.xml b/target/classes/archetype-resources/pom.xml
+new file mode 100644
+--- /dev/null	(date 1680653596497)
++++ b/target/classes/archetype-resources/pom.xml	(date 1680653596497)
+@@ -0,0 +1,15 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++  <groupId>$org.koreait</groupId>
++  <artifactId>$day02</artifactId>
++  <version>$1.0-SNAPSHOT</version>
++  <dependencies>
++    <dependency>
++      <groupId>junit</groupId>
++      <artifactId>junit</artifactId>
++      <version>3.8.1</version>
++      <scope>test</scope>
++    </dependency>
++  </dependencies>
++</project>
+Index: target/classes/archetype-resources/src/test/java/AppTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/archetype-resources/src/test/java/AppTest.java b/target/classes/archetype-resources/src/test/java/AppTest.java
+new file mode 100644
+--- /dev/null	(date 1680653596500)
++++ b/target/classes/archetype-resources/src/test/java/AppTest.java	(date 1680653596500)
+@@ -0,0 +1,38 @@
++package $org.koreait;
++
++import junit.framework.Test;
++import junit.framework.TestCase;
++import junit.framework.TestSuite;
++
++/**
++ * Unit test for simple App.
++ */
++public class AppTest 
++    extends TestCase
++{
++    /**
++     * Create the test case
++     *
++     * @param testName name of the test case
++     */
++    public AppTest( String testName )
++    {
++        super( testName );
++    }
++
++    /**
++     * @return the suite of tests being tested
++     */
++    public static Test suite()
++    {
++        return new TestSuite( AppTest.class );
++    }
++
++    /**
++     * Rigourous Test :-)
++     */
++    public void testApp()
++    {
++        assertTrue( true );
++    }
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"7a680280-e951-4c34-a8b7-2a820a5e9f31\" name=\"Changes\" comment=\"\">\n      <change afterPath=\"$PROJECT_DIR$/.idea/compiler.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/encodings.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/jarRepositories.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/uiDesigner.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/config/AppCtx.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/config/AppCtx2.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/config/AppCtx3.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/config/ManualBean.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam/AppCtx.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam/Ex01.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam/Message.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam2/AppCtx.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam2/Ex01.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/exam2/Message.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/main/Ex01.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/main/Ex02.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/models/member/InfoService.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/models/member/JoinService.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/models/member/ListService.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/models/member/Member.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/models/member/MemberDao.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/models/member/sub/MemberDao.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/archetype-resources/pom.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/archetype-resources/src/main/java/App.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/../day01/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/../day01/.idea/workspace.xml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"AnnotationType\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"importingSettings\">\n      <MavenImportingSettings>\n        <option name=\"workspaceImportEnabled\" value=\"true\" />\n      </MavenImportingSettings>\n    </option>\n  </component>\n  <component name=\"ProjectId\" id=\"2Nz4UYPF6LeUnanHjSFwZLCNWkZ\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\n    \"settings.editor.selected.configurable\": \"com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable\"\n  }\n}]]></component>\n  <component name=\"RunManager\" selected=\"Application.exam2.Ex01\">\n    <configuration name=\"Ex01\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"main.Ex01\" />\n      <module name=\"day02\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"main.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"Ex02\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"main.Ex02\" />\n      <module name=\"day02\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"main.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"exam2.Ex01\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"exam2.Ex01\" />\n      <module name=\"day02\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"exam2.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"exam.Ex01\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"exam.Ex01\" />\n      <module name=\"day02\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"exam.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.exam2.Ex01\" />\n        <item itemvalue=\"Application.exam.Ex01\" />\n        <item itemvalue=\"Application.Ex02\" />\n        <item itemvalue=\"Application.Ex01\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"7a680280-e951-4c34-a8b7-2a820a5e9f31\" name=\"Changes\" comment=\"\" />\n      <created>1680653592711</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1680653592711</updated>\n    </task>\n    <servers />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision fb36455bd9383b6ecab4334ff4f5de4d6335d9dd)
++++ b/.idea/workspace.xml	(date 1680669007296)
+@@ -4,39 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="7a680280-e951-4c34-a8b7-2a820a5e9f31" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/config/AppCtx.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/config/AppCtx2.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/config/AppCtx3.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/config/ManualBean.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam/AppCtx.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam/Ex01.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam/Message.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam2/AppCtx.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam2/Ex01.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/exam2/Message.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/main/Ex01.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/main/Ex02.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/models/member/InfoService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/models/member/JoinService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/models/member/ListService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/models/member/Member.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/models/member/MemberDao.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/models/member/sub/MemberDao.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/../day01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day01/.idea/workspace.xml" afterDir="false" />
+-    </list>
++    <list default="true" id="7a680280-e951-4c34-a8b7-2a820a5e9f31" name="Changes" comment="스프링2일차 내용 추가" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -147,6 +115,29 @@
+       <option name="presentableId" value="Default" />
+       <updated>1680653592711</updated>
+     </task>
++    <task id="LOCAL-00001" summary="스프링2일차 내용 추가">
++      <created>1680668885702</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1680668885702</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="스프링2일차 내용 추가" />
++    <option name="LAST_COMMIT_MESSAGE" value="스프링2일차 내용 추가" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: target/classes/archetype-resources/src/main/java/App.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/archetype-resources/src/main/java/App.java b/target/classes/archetype-resources/src/main/java/App.java
+new file mode 100644
+--- /dev/null	(date 1680653596499)
++++ b/target/classes/archetype-resources/src/main/java/App.java	(date 1680653596499)
+@@ -0,0 +1,13 @@
++package $org.koreait;
++
++/**
++ * Hello world!
++ *
++ */
++public class App 
++{
++    public static void main( String[] args )
++    {
++        System.out.println( "Hello World!" );
++    }
++}

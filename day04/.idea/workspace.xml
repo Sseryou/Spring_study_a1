@@ -5,30 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c8f4123-3ed8-4fb0-bc3b-a60a7e335ffc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/config/AppCtx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/main/Ex01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/member/Member.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/member/MemberDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04_2/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04_2/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04_2/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04_2/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04_2/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04_2/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../day04_2/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../day03/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day03/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day05/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day05/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

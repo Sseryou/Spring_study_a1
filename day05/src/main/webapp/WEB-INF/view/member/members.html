@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<!--타임리프는, 기존의 틀을 유지하고 작업할수 있게 해 준다.
+    컴파일 시에는, th:href를 예로 들면 기존 href에 속성을 부여하고, th부분은 사라진다.
+    기존 속성과 타임리프 속성이 같다면 타임리프가 대체한다. -->
+<a href="#" th:href="@{/member/join}">회원가입</a>
+<a th:href="@{/member/join(key1=${param1},key2=${param2})}">회원가입2</a>
+<!-- 대체할 부분을 정의하면 변수를 대체 할 수도 있다. -->
+<a th:href="@{/member/{id}/{id2}(id=${param1}, id2=${param2})}">회원가입3</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>순번</th>
+                <th>아이디</th>
+                <th>회원명</th>
+                <th>휴대전화</th>
+                <th>가입일시</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- members에서 계속 값을 꺼내서 member에 넣음 -->
+            <!-- 진행 방향이 좌에서 우 -->
+            <!-- status : 반복의 정보가 담긴 객체-->
+            <tr th:each="member, status : ${members}" th:object="${member}">
+            <!--<td th:text="${status.index}"></td>-->
+            <!--<td th:text="${status.conut}"></td>-->
+                <td>
+                    <th:block block th:text="${status.count}"></th:block>
+                    (
+                        <span th:if="${status.even}">짝수</span>
+                        <!-- unless는 참이 아닐때 출력-->
+                        <span th:unless="${status.even}">홀수</span>
+                    )
+                    <span th:if="${status.first}">(첫번째)</span>
+                    <span th:if="${status.last}">(마지막)</span>
+
+
+                </td>
+                <td th:text="*{userId}"></td>
+                <td th:text="*{userNm}"></td>
+                <td th:text="*{mobile}"></td>
+                <td th:text="*{regDt}"></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+스프링 웹 MVC
+1. 커맨드 객체 검증
+	Validator 인터페이스
+	Errors : 요청 메서드에 주입
+		rejectValue("필드명", 에러코드) : 특정 필드에 한정한 오류
+		rejectValue("필드명", 에러코드, 기본메세지)
+		
+		reject(에러코드) : 커맨드 객체 자체의 오류(공통)
+		reject(에러코드, 기본 메세지)
+	
+		hasErrors() -> 한개라도 reject, rejectValue를 호출하면 true
+		
+		#fields
+			.errors('필드명')
+			
+			
+	필수 항목 체크
+	ValidatorUtils
+			.rejectIfEmpty //null, isEmpty()
+			.rejectIfEmptyOrWhiteSpace //null(isEmpty()) + isBlank()
+	
+lombok
+@RequiredArgsConstructor
+	- 멤버 변수 중에서  final이 있고 초기 변수가 없는 경우
+	- final 대신 @NonNull 을 붙여도 된다.
+	
+	
+오류메세지 코드
+오류코드
+오류코드.필드명
+오류코드.커맨드객체.필드명
+오류코드.자료형의 클래스명(패키지명)
+
+-아주 편함. 필수!-
+
+	Bean Validation API -> java ee8 : 검증API 2.0 (설계 틀.)
+	hibernate validator - 6.0xx
+	6.0.23버전 사용
+	
+	
+spring jdbc
+tomcat jdbc
+ojdbc8
+
+slf4j-api
+logback-classic
+
+- 양방향 암호화 : 암호화 - 복호화 (원 데이터 복구)
+					AES256, ARIA, OpenSSL ..
+					
+					주소, 전화번호, 쿠키 (암호화 하지만 필요한 데이터)
+					
+- 단방향 암호화 :  해시(복호화 X)
+		비밀번호 - 비밀번호의 일치여부 확인, 실제 비밀번호는 알필요 없다.
+		
+		해시
+			- 고정값 해시 : 같은 값에 대해서 같은 해시코드가 나옴
+					md5, sha1 (데이터의 검증으로만 쓴다. 복호화가 가능함....)
+					sha256, sha512 (지금은 컴퓨터 성능이 아직 부족해서 복호화가 되지 않는다.
+										하지만 언젠가 뚫릴것...)
+					...
+			- 유동값 해시: 해시를 만들때마다 다른 해시 코드가 나옴
+					BCrypt (과거에는, 서버의 부하때문에 사용이 꺼려졌으나
+							현대에 와서 서버의 성능상승 덕에 활용한다.)
+	
+					체크하는 알고리즘이 따로 있다.
+					체크하는 별도의 메서드 활용
+					
+
+				Maven Central 접속
+				검색어에 BCrypt 검색
+				
+				그 중에서 jbcrypt 활용할 계획.
+				jbcrypt의 Snippets가 의존성이다. 복사해서 폼에 붙여넣기
+				
+
+
+2. 세션
+- 개인화된 데이터 (하지만 서버에 있는...)
+
+
+
+3. 인터셉터
+
+4. 쿠키
+
+5. 날짜 값 변환
+
+6. PathVariable
+
+7. 예외처리
+
+8. 파일 업로드
+
+9. 프로필
+
+10. 프로퍼티

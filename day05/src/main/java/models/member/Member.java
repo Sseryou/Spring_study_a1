@@ -6,9 +6,12 @@ import java.time.LocalDateTime;
 
 @Data
 public class Member {
+
+    private Long userNo;
     private String userId;
+    private String userPw;
     private String userNm;
     private String mobile;
-    private String intro;
+    private String email;
     private LocalDateTime regDt;
 }

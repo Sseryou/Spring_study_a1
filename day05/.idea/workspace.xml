@@ -4,29 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eff390c9-591a-4420-bfb9-2f96da09f70f" name="Changes" comment="&quot;날라간 코드 복구....&quot;">
-      <change afterPath="$PROJECT_DIR$/src/main/java/commons/CommonLibrary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/main/IndexController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/members/MembersController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages/commons_en.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages/commons_ko.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/common.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/layouts/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/main/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/member/members.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/mypage/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/outlines/footer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/outlines/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="eff390c9-591a-4420-bfb9-2f96da09f70f" name="Changes" comment="&quot;23-04-11 수업내용 추가&quot;">
+      <change afterPath="$PROJECT_DIR$/src/main/java/config/DbConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/members/JoinValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/members/Login.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/members/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/members/LoginValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/member/JoinService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/member/LoginService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/member/MemberDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/member/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/config/ControllerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/ControllerConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/config/MvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/MvcConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/members/InfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/members/InfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/members/Join.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/members/Join.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/members/JoinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/members/JoinController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/member/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/member/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/member/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/member/info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages/commons_ko.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages/commons_ko.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/member/join.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/member/join.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/ControllerConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config/ControllerConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/MvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config/MvcConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/members/InfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/members/InfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/members/Join.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/members/Join.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/members/JoinController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/members/JoinController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/messages/commons_ko.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages/commons_ko.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/member/Member.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/member/Member.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +41,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -71,15 +76,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Administrator/Desktop/성민수/6.서버프로그램 구현/spring_study/day05/src/main/resources/messages",
-    "settings.editor.selected.configurable": "File.Encoding"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/Desktop/성민수/6.서버프로그램 구현/spring_study/day05/src/main/resources/messages&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\Desktop\성민수\6.서버프로그램 구현\spring_study\day05\src\main\resources\messages" />
@@ -98,9 +103,6 @@
       <predefined_log_file id="Tomcat Host Manager Log" />
       <option name="contextPath" value="/study" />
       <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
-      <option name="envOptions">
-        <map />
-      </option>
       <option name="extraClassPath" value="" />
       <option name="port" value="3000" />
       <option name="tomcatInfo">
@@ -133,11 +135,19 @@
       <option name="project" value="LOCAL" />
       <updated>1681171390593</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="&quot;23-04-11 수업내용 추가&quot;">
+      <created>1681187541019</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681187541019</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;날라간 코드 복구....&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;날라간 코드 복구....&quot;" />
+    <MESSAGE value="&quot;23-04-11 수업내용 추가&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;23-04-11 수업내용 추가&quot;" />
   </component>
 </project>

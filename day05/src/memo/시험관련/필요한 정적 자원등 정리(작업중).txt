@@ -1,0 +1,14 @@
+필요한 자원 등...정리
+
+-xml 파일-
+
+resources/logback.xml
+src/main/webapp/WEB-INF/web.xml
+-폴더-
+src/main/java
+src/main/webapp
+src/main/webapp/WEB-INF
+src/main/webapp/WEB-INF/view
+src/main/resources/static
+src/test
+

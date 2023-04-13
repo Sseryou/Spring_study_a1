@@ -1,0 +1,16 @@
+애노테이션 및 기능구현에 필요한 클래스 정리
+-어디에 사용하는지 사용처를 적고,
+	어떤 클래스를 구현할수 있는지 적는다.
+
+
+@Configuration
+
+@EnableWebMvc
+(MvcConfig에 사용, WebMvcConfigurer를 구현 기능 포함
+
+	구현해야할 메서드
+			configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer)
+			addResourceHandlers(ResourceHandlerRegistry registry)
+			configureViewResolvers(ViewResolverRegistry registry)
+
+)

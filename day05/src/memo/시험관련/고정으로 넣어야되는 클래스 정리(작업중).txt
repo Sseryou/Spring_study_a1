@@ -1,0 +1,26 @@
+기본적으로 사용하게 되는 클래스
+
+@Configuration
+@EnableWebMvc //스프링 MVC 활성화
+public class MvcConfig implements WebMvcConfigurer {
+	
+	@Override
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+	//DispatcherServlet의 매핑 경로를 '/'로 주었을 때, jsp/html/css 등을 올바르게 처리하기위한 설정을 추가한다.
+		configurer.enable();
+	}
+	
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+	//css, js, 이미지 등등 정적인 자원들을 저장할 경로를 지정한다.
+		registry.addResourceHandler("/**")
+			.addResourceLocations("classpath:/static/");
+	}
+	
+	@Override
+	public void configureViewResolvers(ViewResolverRegistry registry) {
+	//jsp를 이용해서 컨트롤러 실행 결과를 보여주기 위한 설정을 추가한다.
+		registry.jsp("/WEB-INF/view/", ".jsp");
+	}
+}
+

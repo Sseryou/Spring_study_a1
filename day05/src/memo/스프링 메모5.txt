@@ -1,0 +1,150 @@
+1.세션
+세션 : 개인화된 서비스를 서버에서 제공
+쿠키값을 이용하게 된다.
+
+참고)
+스프링 관리 객체
+
+HttpServletResponse
+HttpServletRequest
+HttpSession
+
+- 의존성 자동 주입
+- 요청 메서드에 자동 주입
+
+1,2,3 일차꺼 구현
+스프링 배웠던것 구현...
+
+스프링에서 제공하는 session
+map방식
+
+2. 인터셉터
+- HandlerInterceptor 인터페이스
+		- boolean preHandle(....)
+			- 컨트롤러 빈 요청 메서드를 실행하기 전
+			- true : 컨트롤러 처리
+			- false : 중단
+			- 접근 권한 통제에서 주로 사용
+			
+			
+		- void postHandle(....)
+			- 컨트롤러 빈 요청 메서드 처리 후 ModelAndView 반환 한 직후 실행
+			
+		- void afterCompletion(....)
+			- 응답 완료 후 실행
+			
+- WebMvcConfigurer
+		- addInterceptors : 설정 (공통, 추가기능 설정)
+
+3. 쿠키
+@CookieValue
+		기본동작 : 변수명과 동일한 쿠키명이 있으면 자동 주입
+		
+4. 날짜 값 변환
+- java.time 패키지
+	LocalDate, LocalDateTime
+	
+	요청데이터가 String : LocalDate, LocalTime,
+	LocalDateTime으로 자동 변환 X
+	
+	@DateTimeFormat
+		- pattern : 
+		
+		- 형식이 일치하지 않을때
+			typeMismatch
+			
+
+5.@PathVariable : 경로 변수명
+/member/회원아이디
+
+
+
+6. 예외처리
+@ExceptionHandler(발생할 예외 클래스 클래스(Class))
+
+- 예외 처리 메서드 자동 주입
+	- 발생한 예외 객체
+	- HttpServletRequest
+	- HttpServletResponse
+	- HttpSession
+	- Model model
+	
+	
+@ControllerAdvice : 컨트롤러 공통
+
+@RestControllerAdvice
+	
+	
+
+7. 파일 업로드
+설정
+MultipartFile 인터페이스
+
+
+1024바이트가 1kb
+1024kb -> 1mb
+20,971,520바이트 - > 20mb
+
+62,914,560 바이트 -> 60mb
+
+
+기본 POST 양식 데이터 형식 (Content-Type)
+content-type  : application/x-www-form-urlencoded
+userId=user01&userPw=12345678
+서버는 양식데이터로 전달을 하게 되는데,
+바이너리 데이터로는 전달하지 않게 된다.
+
+그래서 양식데이터 파트와 바이너리데이터 파트를 분리해줄 필요가 있다.
+
+
+바이너리 데이터
+10101010101110111000 - 인식 못함
+
+★면접에서 많이 물어봄.
+파일 전송 : multipart : 여러 파트 : 양식데이터와 파일데이터의 양식이 일치하지 않으므로
+파트를 나눠서 전송하기 위함
+
+요청 바디
+----양식 데이터 파트 ----
+userId=user01&userPw=12345678
+
+----파일 데이터 파트 ----
+파일 데이터....
+
+
+<form method="post" ..... enctype="multipart/form-data">
+
+파일 업로드 디렉토리 -> 정적 경로 연결
+
+
+
+8. 프로필
+- 프로필 변수에 따라 생성하는 스프링 빈
+- 환경변수의 구분값을 이용하게 된다.
+@Profile("환경 변수")
+
+spring.profiles.active=환경변수
+
+실행시 -Dspring.profiles.active=prod
+@Profile("prod")
+
+
+9. 프로퍼티
+properties 파일의 값을 불러와서 사용할때 사용
+
+반드시 static, @Bean
+PropertySourcesPlaceholderConfigurer
+
+@Value("${키}")
+
+
+부트 사용시
+java -jar 배포파일.jar -Dspring.profiles.active=prod
+
+application.properties
+application-prod.properties
+
+프로필 + 프로퍼티 : 주로 설정시에 사용
+
+
+

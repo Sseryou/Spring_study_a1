@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layouts/main}">
+
+    <main layout:fragment="content">
+        <th:block th:object="${member2}">
+        <dl>
+            <dt>아이디</dt>
+            <dd th:text="*{userId}"></dd>
+        </dl>
+            <dl>
+                <dt>회원명</dt>
+                <dd th:text="*{userNm}"></dd>
+            </dl>
+        </th:block>
+
+
+    </main>
+
+
+</html>

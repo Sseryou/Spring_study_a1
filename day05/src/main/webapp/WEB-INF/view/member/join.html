@@ -44,6 +44,13 @@
                         <div th:each="err : ${#fields.errors('email')}" th:text="${err}"></div>
                     </dd>
                 </dl>
+                <dl>
+                    <dt>생년월일</dt>
+                    <dd>
+                        <input type="text" name="birthDt" th:field="*{birthDt}">
+                        <div th:each="err : ${#fields.errors('birthDt')}" th:text="${err}"></div>
+                    </dd>
+                </dl>
                 <div>
                     <input type="checkbox" name="agree" value="true" id="agree" th:field="*{agree}">
                     <label for="agree" th:text="#{member.terms.agree}"></label>

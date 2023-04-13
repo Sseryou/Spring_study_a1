@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+
+    <main layout:fragment="content">
+        <!-- 파트를 분리해서 읽으라고 명령, 파일(바이너리)와 그 외 데이터 분리 -->
+        <form method="post" th:action="@{/file/upload}" enctype="multipart/form-data">
+            <!--multiple를 넣으면 여러 파일을 넣을수 있다. 배열 형식으로 들어가게 된다.-->
+            <input type="file" name="files" multiple>
+            <button type="submit">업로드</button>
+        </form>
+    </main>
+
+
+
+</html>

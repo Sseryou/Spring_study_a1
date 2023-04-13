@@ -39,6 +39,8 @@ public class JoinController {
     //커맨드 객체 바로앞에 Error가 있어야 함! 커맨드 진행방향이 좌에서 우기 때문에..
     public String joinPs(@Valid Join join, Errors errors, Model model) {
 
+        System.out.println(join);
+
         validator.validate(join, errors);
         //이 순간에, validator를 검증하기 위한 추가 클래스가 필요해 진다.
         //joinValidator
